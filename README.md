@@ -1,10 +1,10 @@
 # ⛩️ 荒魂の國（あらみたまのくに） - 乱世漂泊録 -
-**時間を慈しむ和風オープンワールド冒険活劇・生活伝承RPG（MASTER VISION v2.2）**
+**時間を慈しむ和風オープンワールド冒険活劇・生活伝承RPG（MASTER VISION v2.3.3）**
 
 - **企画・オーナー**: プロジェクトオーナー（氏名非公開）
 - **共同設計・世界観構築**: アルテ（Arte / Gemini）
 - **整合性監査・考証レビュー**: むぎ（Mugi / Muse）
-- **現在のステータス**: `MASTER VISION v2.2`（出雲編全五幕・戦闘5属性・段階別師事＆マルチ解法試練統合版 / 2026-11-07）
+- **現在のステータス**: `MASTER VISION v2.3.3`（出雲編全五幕・戦闘5属性・段階別師事＆マルチ解法試練統合版 / 2026-11-07）
 - **GitHub リポジトリ**: https://github.com/swiftkn1-svg/aramitama-no-kuni
 - **Google Drive プロジェクト親フォルダ**: 📂 荒魂の國_乱世漂泊録_Project（非公開）
 
@@ -20,7 +20,7 @@
 | :--- | :--- | :--- | :--- |
 | **🏠 プロジェクト親フォルダ** | **📂 荒魂の國_乱世漂泊録_Project** | `/`（リポジトリルート） | プロジェクト全体のエントリポイント |
 | **00_ルート（総合索引）** | **📄 00_総合索引＆参照資料・出典一覧** | `docs/00_index/00_MASTER_INDEX.md` | 全ドキュメント索引＋公的機関・学術出典URL集 |
-| **01_企画書・マスター仕様** | **📂 01_企画書フォルダ**<br>**📄 MASTER VISION v2.2** | `docs/01_spec/MASTER_VISION_v2.2.md` | 全12章の最高規範仕様書（Single Source of Truth） |
+| **01_企画書・マスター仕様** | **📂 01_企画書フォルダ**<br>**📄 MASTER VISION v2.3.3** | `docs/01_spec/MASTER_VISION_v2.3.3.md` | 全12章の最高規範仕様書（Single Source of Truth） |
 | **02_考証資料・リファレンス** | **📂 02_考証資料フォルダ**<br>（第1版 / 補遺1 / 補遺2 / 補遺3 / 補遺4） | `docs/02_research/` | 1540–1580年の歴史・民俗・経済・一宮・五職能考証（証拠区分`[A]`〜`[D]`） |
 | **03_小説・世界観シナリオ** | **📂 03_小説フォルダ**<br>（序幕 / 第二幕 / 第三幕 / 第四幕 / 第五幕） | `docs/03_novels/izumo/` | 正史OPおよび出雲平定編・全五幕プロトタイプ小説（永禄5年〜9年） |
 | **04_概念図・マップイラスト** | **📂 04_概念図・マップフォルダ**<br>（①概念古地図 / ②俯瞰概念図 / ③戦国出雲古地理マップ） | `docs/04_maps/MAPS_AND_GEOGRAPHY.md` | **※高解像度画像（JPG）はGドライブ側に格納**。GitHub側にはリンクと全15拠点対照表を収録 |
@@ -28,7 +28,7 @@
 | **06_マスターデータ＆検証コード** | （初期アーカイブzipをルートに保管） | `data/` ＆ `scripts/` | **※GitHub側が正本**。16スキル・5属性・15拠点・師匠試練のJSON/CSVとPythonシミュレータ |
 
 ### 💡 運用のルール（どちらを見ればいい？）
-1. **文章・仕様の閲覧＆AIセッションでの参照**: Google DriveのGoogleドキュメント（MASTER VISION v2.2）とGitHubの `docs/01_spec/MASTER_VISION_v2.2.md` は同一内容で同期しています。変更履歴（Diff）を追いたい時は **GitHub**、ブラウザやスマホからサクッと読みたい時は **Google Drive** が便利です。
+1. **文章・仕様の閲覧＆AIセッションでの参照**: Google DriveのGoogleドキュメント（MASTER VISION v2.3.3）とGitHubの `docs/01_spec/MASTER_VISION_v2.3.3.md` は同一内容で同期しています。変更履歴（Diff）を追いたい時は **GitHub**、ブラウザやスマホからサクッと読みたい時は **Google Drive** が便利です。
 2. **大容量の画像・コンセプトアート**: Gitリポジトリの肥大化を防ぐため、高解像度の古地図・俯瞰イラスト本体は **Google Driveの 04_概念図・マップイラスト フォルダ** に置き、GitHubの `docs/04_maps/MAPS_AND_GEOGRAPHY.md` から直接リンクで開けるようにしています。
 3. **マスターデータ（JSON/CSV）と検証プログラム（Python）**: `data/` および `scripts/` は **GitHubリポジトリ** を正本（Single Source of Truth）として管理・更新していきます。
 
@@ -51,7 +51,7 @@ aramitama-no-kuni/
 │   ├── 00_index/
 │   │   └── 00_MASTER_INDEX.md                 # 総合索引＆外部出典ソース一覧（公的機関・学術資料リンク集）
 │   ├── 01_spec/
-│   │   └── MASTER_VISION_v2.2.md              # 企画基本設計書（全12章・Single Source of Truth）
+│   │   └── MASTER_VISION_v2.3.3.md              # 企画基本設計書（全12章・Single Source of Truth）
 │   ├── 02_research/                           # 1540-1580年 歴史・民俗学考証データベース（証拠区分[A]〜[D]）
 │   │   ├── 01_historical_folklore_v1.md       # 考証資料 第1版（大名・曲者・職人・鬼門・地域怪異）
 │   │   ├── 02_appendix1_economy_and_za.md     # 補遺1：職能・座と戦国経済システム（撰銭・独占権・無縁所）
