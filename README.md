@@ -59,7 +59,9 @@ aramitama-no-kuni/
 │   │   ├── 04_appendix3_sacred_mountains.md   # 補遺3：霊山・街道・結界配置（御師・四至牓示・女人結界）
 │   │   ├── 05_appendix4_five_professions.md   # 補遺4：五職能（傀儡子・座頭・馬借・高野聖・鷹匠）と五儀礼
 │   │   ├── 06_izumo_deep_dive.md              # 補遺5：出雲編・時代考証の深掘り＆一次・二次史料照合リスト
-│   │   └── 07_sengoku_arms_and_tools.md       # 補遺6：戦国期（1550〜1570年代）武器・武具・職能道具の時代考証
+│   │   ├── 07_sengoku_arms_and_tools.md       # 補遺6：戦国期（1550〜1570年代）武器・武具・職能道具の時代考証
+│   │   ├── 08_sengoku_martial_traditions.md   # 補遺7：戦国期（1550〜1570年代）武芸流派・兵法書・伝書の時代考証
+│   │   └── 09_sengoku_religious_arts_and_divination.md # 補遺8：神道・陰陽道・密教法術と暦注・占術の時代考証
 │   ├── 03_novels/izumo/                       # 正史プロトタイプ小説：出雲平定編（全5幕・永禄5年〜9年）
 │   │   ├── 00_prologue.md                     # 序幕：常世の暁と託されし通い札（正史OP）
 │   │   ├── 02_act2_kando_no_mizuumi.md        # 第二幕：神門水海のあわいと、潮騒の里結び
