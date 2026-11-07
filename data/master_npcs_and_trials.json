@@ -1,0 +1,214 @@
+{
+  "version": "MASTER VISION v2.2",
+  "master_tiers": [
+    {
+      "tier": 1,
+      "title": "里の師匠・門前の親方・足軽小頭（中伝・一人前）",
+      "skill_cap_range": [
+        50,
+        70
+      ],
+      "examples": [
+        "杵築門前の片目老鍛冶",
+        "高瀬城の足軽小頭",
+        "門前の社人"
+      ]
+    },
+    {
+      "tier": 2,
+      "title": "一国の棟梁・大社筆頭・大名家の猛将（奥伝・国の名手）",
+      "skill_cap_range": [
+        70,
+        85
+      ],
+      "examples": [
+        "奥出雲の村下・多々良鉄蔵",
+        "番匠棟梁・飛騨の源左",
+        "山立頭領・猪目の小六",
+        "薬師・百草の胡蝶",
+        "大社筆頭巫女・八雲咲耶",
+        "猛将・吉川駿河守元春"
+      ]
+    },
+    {
+      "tier": 3,
+      "title": "天下の大宗家・深山の隠者・秘伝古文書（皆伝・神域）",
+      "skill_cap_range": [
+        86,
+        100
+      ],
+      "examples": [
+        "諸国放浪の剣聖（上泉信綱・塚原卜伝級）",
+        "名医・曲直瀬道三",
+        "養父（老匠）の兄弟子",
+        "禁足地の秘伝古文書＋百鬼夜行極限実戦"
+      ]
+    }
+  ],
+  "multi_solution_trials": [
+    {
+      "id": "trial_01",
+      "name": "① 不殺・無傷の試練『なまくら刀の一太刀』",
+      "objective": "耐久1のなまくら古刀を一度も刃こぼれさせず、泥鎧の大猪を生かしたまま牙だけ折って戻れ",
+      "target_armor_hardness": 80,
+      "blade_max_hardness": 20,
+      "solutions": [
+        {
+          "type": "正攻法（剣術・見切り）",
+          "tags": [
+            "mouth_open_timing",
+            "precise_parry"
+          ],
+          "armor_reduction": 70,
+          "description": "突進をかわし口を開けた瞬間に牙の根元だけを斬る"
+        },
+        {
+          "type": "別解A（地形・水属性誘導）",
+          "tags": [
+            "water_wetland_lure",
+            "mud_soften"
+          ],
+          "armor_reduction": 65,
+          "description": "湿地や川へ誘導して泥鎧をふやかし、装甲硬度を下げてから斬る"
+        },
+        {
+          "type": "別解B（杜氏・本草の知恵）",
+          "tags": [
+            "strong_sake_bait",
+            "sleep_herb"
+          ],
+          "armor_reduction": 80,
+          "description": "強い濁り酒や眠り草を混ぜた餌で泥酔・昏睡させて安全に牙を切る"
+        }
+      ]
+    },
+    {
+      "id": "trial_02",
+      "name": "② 五感・暗闇の試練『無明・音聴きの座』",
+      "objective": "松明なしの漆黒の闇で、音だけを頼りに師匠の放つ矢を打ち落とせ",
+      "solutions": [
+        {
+          "type": "正攻法（音曲・心眼）",
+          "tags": [
+            "3d_audio_listening",
+            "just_deflect"
+          ],
+          "description": "衣擦れと弦音・風切り音の立体音響だけで軌道を読み斬り落とす"
+        },
+        {
+          "type": "別解A（忍び・物理工作）",
+          "tags": [
+            "scatter_gravel_leaves"
+          ],
+          "description": "床に乾いた砂利や落ち葉を撒き、師匠の踏み込み足音を大きくして位置を特定する"
+        },
+        {
+          "type": "別解B（香道・左目あわい視）",
+          "tags": [
+            "incense_smoke_wave",
+            "left_eye_sense"
+          ],
+          "description": "薄く焚いた香煙の揺らぎを左目で視て矢筋を読む"
+        }
+      ]
+    },
+    {
+      "id": "trial_03",
+      "name": "③ 刻と静寂の試練『一炷・不退転の円』",
+      "objective": "肩に灯した極細の線香が一炷燃え尽きるまで、一間の円から出ず大振りで煙を乱さずに猛攻を捌き切れ",
+      "solutions": [
+        {
+          "type": "正攻法（最小体捌き・合気）",
+          "tags": [
+            "minimal_step",
+            "soft_parry"
+          ],
+          "description": "大振りや転がり回避を封印し、半歩の足捌きと受け流しだけで凌ぎ切る"
+        },
+        {
+          "type": "別解A（細工・防風香立）",
+          "tags": [
+            "windproof_incense_holder"
+          ],
+          "description": "細工スキルで風除けの透かし金具を細工し、煙の乱れ許容値を広げる"
+        }
+      ]
+    },
+    {
+      "id": "trial_04",
+      "name": "④ 天候・刹那の試練『雷鳴隠しの一撃』",
+      "objective": "銃声を周囲の警戒兵に悟られずに遠方の標的を撃ち抜け",
+      "solutions": [
+        {
+          "type": "正攻法（天候読み）",
+          "tags": [
+            "thunder_sync_shot"
+          ],
+          "description": "夕立の稲光から雷鳴が轟くコンマ数秒に銃声を重ねて撃つ"
+        },
+        {
+          "type": "別解A（環境轟音利用）",
+          "tags": [
+            "waterfall_roar",
+            "tatara_bellows_noise",
+            "festival_taiko"
+          ],
+          "description": "晴天でも大滝の壺・たたら場の天秤鞴・祭りの大太鼓の轟音に重ねて撃つ"
+        },
+        {
+          "type": "別解B（竹筒・濡れ布工作）",
+          "tags": [
+            "bamboo_wet_cloth_suppressor"
+          ],
+          "description": "木工・細工で竹筒と濡れ布の簡易消音具を銃口に装着して撃つ"
+        }
+      ]
+    },
+    {
+      "id": "trial_05",
+      "name": "⑤ 観察・見取りの試練『背中で盗む見取り稽古』",
+      "objective": "門前払い状態から、師匠の秘密の日常ルーチンを観察・再現して入門を認めさせよ",
+      "solutions": [
+        {
+          "type": "正攻法（早朝尾行・観察）",
+          "tags": [
+            "observe_morning_routine",
+            "waterfall_basin_water",
+            "sacred_ash_mix"
+          ],
+          "description": "寅の刻に裏山の滝壺の底水を汲み、炉に特定の灰を混ぜる所作を観察して再現する"
+        },
+        {
+          "type": "別解A（酒場の一献・聞き込み）",
+          "tags": [
+            "tavern_treat_sake_dango"
+          ],
+          "description": "茶屋の婆やや兄弟子に好物の酒・団子を振る舞い、師匠の日課のヒントを聞き出す"
+        }
+      ]
+    },
+    {
+      "id": "trial_06",
+      "name": "⑥ 業と慈悲の試練『外法に堕ちた兄弟子の鎮魂』",
+      "objective": "85➔100皆伝試練。妖刀に呑まれた兄弟子を殺さず、手元の妖刀だけを部位破壊して正気に戻せ",
+      "solutions": [
+        {
+          "type": "正攻法（組討・武器破壊）",
+          "tags": [
+            "disarm_grapple",
+            "sunder_cursed_blade"
+          ],
+          "description": "組討で泥に引き倒し、向こう鎚や鎧通しで妖刀の刀身だけをへし折る"
+        },
+        {
+          "type": "別解A（思い出の夕餉・薫香共鳴）",
+          "tags": [
+            "favorite_miso_soup",
+            "hometown_incense"
+          ],
+          "description": "囲炉裏話で聞いた兄弟子の好物の山鳥汁や故郷の薫香を焚いて心の隙を作り、妖刀を弾き飛ばす"
+        }
+      ]
+    }
+  ]
+}

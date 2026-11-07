@@ -1,0 +1,228 @@
+{
+  "version": "MASTER VISION v2.2",
+  "timeline_5_years": {
+    "year_1_1562": "永禄5年（初年）：稲佐の浜漂着 ➔ 神門水海・湿地の古祠里結び（第二幕） ➔ 初冬・斐伊川万九千社舟橋普請＆奥出雲山内入り（第三幕前半）",
+    "year_2_1563": "永禄6年（2年目）：厳冬・奥出雲での一代吹き＆玉鋼要釘2本鍛造（第三幕後半） ➔ 春〜夏・佐太神社と北山回廊中継 ➔ 秋・白鹿山千尋の間歩決戦＆塞の小祠建立（第四幕）",
+    "years_3_4_1564_1565": "永禄7〜8年（3〜4年目）：八重垣神社・熊野大社・美保神社の楔結び直しによる東への包囲圧縮",
+    "year_5_1566": "永禄9年霜月（5年目・白鹿山から丸3年・5度目の冬）：月山富田城・千引の要石決戦＆四方共鳴『国引きの大結界』発動・太平の夜祭り（第五幕）"
+  },
+  "barrier_range_3_tiers": [
+    {
+      "tier": 1,
+      "name": "基本射程（小祠・村鎮守・真砂要釘）",
+      "ri": "2〜3里",
+      "km": "約8〜12km"
+    },
+    {
+      "tier": 2,
+      "name": "上位射程（大社・名刹＋奥出雲の玉鋼要釘）",
+      "ri": "4〜5里",
+      "km": "約16〜20km"
+    },
+    {
+      "tier": 3,
+      "name": "最終共鳴（国引きの大結界）",
+      "ri": "十数里",
+      "km": "約40〜60km（一国全域）"
+    }
+  ],
+  "aramitama_4_bosses": [
+    {
+      "act": "第二幕",
+      "location": "神門水海・湿地の古祠",
+      "aramitama_name": "水大蜘蛛",
+      "nigimitama_deity": "八束水臣津野命の眷属神 ／ 塩冶毘古命・速秋津比売神（水門神）",
+      "nail_pattern": "パターンA（心御柱×地下要石の継手打ち）",
+      "sources": [
+        "https://www.nagahamajinja.or.jp/history/",
+        "https://www.shimane-jinjacho.or.jp/izumo/368387146a93929fc1bd8c34dc1af193cf964263.html"
+      ]
+    },
+    {
+      "act": "第三幕",
+      "location": "斐伊川二股分岐（万九千社）〜奥出雲",
+      "aramitama_name": "赤黒い泥の猪神",
+      "nigimitama_deity": "大穴持命の『猪石』の神使・麻須羅神 ／ 大山津見神の眷属",
+      "nail_pattern": "パターンA（舟橋普請＋万九千社本殿打釘）",
+      "sources": [
+        "http://home.s01.itscom.net/sahara/stone/s_chugoku/shi_ishinomiya/ishinomiya.htm",
+        "https://www.town.nanbu.tottori.jp/akaiiwa/2/2/",
+        "https://mankusenjinja.jp/our_historical"
+      ]
+    },
+    {
+      "act": "第四幕",
+      "location": "白鹿山・千尋の間歩と夫婦磐座",
+      "aramitama_name": "黒鉄の大百足",
+      "nigimitama_deity": "鉱脈の祖神『金山彦神・金山姫神』の神使（鉱脈の化身）× 佐太大神の地脈神",
+      "nail_pattern": "パターンC（戦場緊急時の龍穴直打ち ➔ 頭三寸を芯とした後付け『塞の小祠』建立＋祝詞の筋通し）",
+      "sources": [
+        "https://www.city.sado.niigata.jp/site/bunkazai/5145.html",
+        "https://ja.wikipedia.org/wiki/%E9%87%91%E5%B1%B1%E5%BD%A6%E7%A5%9E"
+      ]
+    },
+    {
+      "act": "第五幕",
+      "location": "月山富田城・千引の要石と勝日高守神社",
+      "aramitama_name": "八岐の黒蛇（ヤマタノオロチ）",
+      "nigimitama_deity": "出雲大水脈の龍神 × 勝日高守神社（大己貴幸魂神・素戔嗚命）",
+      "nail_pattern": "パターンB（三年乾燥の栗の大木楔［留め木］噛ませ ＋ 二尺『八握の大要釘』本締め）",
+      "sources": [
+        "https://yasugi-kankou.com/spot/katsuhitakamorijinja/",
+        "http://engishiki.org/izumo/bun/imo430146-01.html"
+      ]
+    }
+  ],
+  "nodes_west_to_east": [
+    {
+      "id": 1,
+      "name": "日御碕（ひのみさき）",
+      "act": "第二幕",
+      "modern_location": "出雲市大社町日御碕",
+      "landmark": "日御碕神社",
+      "url": "https://hinomisaki-jinja.jp/about",
+      "distance_note": "杵築から北西約8km",
+      "role": "島根半島西端。主人公到着前に杵築・鰐淵寺と初期三角を形成"
+    },
+    {
+      "id": 2,
+      "name": "稲佐（いなさ）の浜",
+      "act": "序幕・二幕",
+      "modern_location": "出雲市大社町杵築北",
+      "landmark": "稲佐の浜（弁天島）",
+      "url": "https://www.izumo-kankou.gr.jp/213",
+      "distance_note": "杵築西方約1km",
+      "role": "主人公が漂着した国譲り・神迎の浜"
+    },
+    {
+      "id": 3,
+      "name": "杵築（きづき）大社",
+      "act": "全幕",
+      "modern_location": "出雲市大社町杵築東",
+      "landmark": "出雲大社",
+      "url": "https://izumooyashiro.or.jp/",
+      "distance_note": "西の基点（0km）",
+      "role": "出雲国一宮（西の要）。門前町到着でフリーローム（案A）解禁"
+    },
+    {
+      "id": 4,
+      "name": "鰐淵寺（がくえんじ）",
+      "act": "二幕・三幕",
+      "modern_location": "出雲市別所町",
+      "landmark": "浮浪山 鰐淵寺",
+      "url": "https://gakuenji.jp/",
+      "distance_note": "杵築から東へ約10km（約2里半）",
+      "role": "北山の修験古刹。初期北三角の東頂点"
+    },
+    {
+      "id": 5,
+      "name": "神門水海・菱根池",
+      "act": "第二幕",
+      "modern_location": "出雲市大社町修理免〜長浜〜湖陵町",
+      "landmark": "神門水海・菱根池跡",
+      "url": "https://www.izm.gr.jp/izumoru/readmore.php?gid=236&tno=-1",
+      "distance_note": "杵築の南2〜5km",
+      "role": "当時杵築の南に広がっていた汽水内海と底なし湿地"
+    },
+    {
+      "id": 6,
+      "name": "南の湿地の古祠",
+      "act": "第二幕",
+      "modern_location": "出雲市大社町修理免〜塩冶・長浜周辺",
+      "landmark": "長浜神社 / 塩冶神社周辺",
+      "url": "https://www.nagahamajinja.or.jp/history/",
+      "distance_note": "杵築から南〜南東へ約5km",
+      "role": "門前町を守るため第二幕で繋いだ南の頂点（水大蜘蛛戦）"
+    },
+    {
+      "id": 7,
+      "name": "斐伊川二股分岐・万九千社・高瀬城",
+      "act": "第三幕",
+      "modern_location": "出雲市斐川町併川〜神立・米原",
+      "landmark": "万九千神社（神立橋付近）",
+      "url": "https://mankusenjinja.jp/our_historical",
+      "distance_note": "湿地の古祠・鰐淵寺から東へ約7〜8km（徒歩2日・1泊野営）",
+      "role": "西流と東流の分岐点（14日間の舟橋普請・泥の猪神戦）"
+    },
+    {
+      "id": 8,
+      "name": "奥出雲の山内（高殿・金屋子）",
+      "act": "三幕・五幕",
+      "modern_location": "雲南市吉田町菅谷〜奥出雲町・安来市比田",
+      "landmark": "菅谷たたら山内 / 金屋子神社",
+      "url": "https://japan-heritage.bunka.go.jp/ja/stories/story034/",
+      "distance_note": "高瀬から南へ山道4日（直線約28km）",
+      "role": "村下との三日三晩の一代吹き・玉鋼要釘2本の鍛造・南の地脈の核"
+    },
+    {
+      "id": 9,
+      "name": "平田（ひらた）の湊",
+      "act": "第四幕",
+      "modern_location": "出雲市平田町",
+      "landmark": "木綿街道・平田船川",
+      "url": "https://momen-kaido.jp/",
+      "distance_note": "宍道湖西岸",
+      "role": "白鹿山へ向かう前に要釘の最終火入れを行った湊町"
+    },
+    {
+      "id": 10,
+      "name": "佐太（さだ）神社",
+      "act": "四幕・五幕",
+      "modern_location": "松江市鹿島町佐陀宮内",
+      "landmark": "出雲國二ノ宮 佐太神社",
+      "url": "https://sadajinjya.jp/?m=wp&WID=4199",
+      "distance_note": "鰐淵寺から東へ約19km（北山回廊の古祠で鱗継ぎ中継）",
+      "role": "出雲国二宮（北の要社）"
+    },
+    {
+      "id": 11,
+      "name": "白鹿山（しらがやま）・白鹿城",
+      "act": "四幕・五幕",
+      "modern_location": "松江市法吉町・黒田町",
+      "landmark": "白鹿城跡・真山",
+      "url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%B9%BF%E5%9F%8E%E3%81%AE%E6%88%A6%E3%81%84",
+      "distance_note": "佐太神社から南東へ約6km",
+      "role": "千尋の間歩（黒鉄の大百足戦・日蝕）とパターンC『塞の小祠』建立地"
+    },
+    {
+      "id": 12,
+      "name": "八重垣神社・熊野大社",
+      "act": "第五幕",
+      "modern_location": "松江市佐草町〜松江市八雲町熊野",
+      "landmark": "八重垣神社 / 熊野大社",
+      "url": "http://www.kumanotaisha.or.jp/kumano/kumano.htm",
+      "distance_note": "白鹿山から南へ約7〜8kmずつ",
+      "role": "3〜4年目に結び直した南の大社（上位射程で月山富田へ接続）"
+    },
+    {
+      "id": 13,
+      "name": "美保（みほ）神社",
+      "act": "第五幕",
+      "modern_location": "松江市美保関町美保関",
+      "landmark": "美保神社",
+      "url": "https://mihojinja.or.jp/",
+      "distance_note": "島根半島東端",
+      "role": "中海北側の海路と東の外縁を抑える要社"
+    },
+    {
+      "id": 14,
+      "name": "黄泉比良坂（よもつひらさか）",
+      "act": "第五幕",
+      "modern_location": "松江市東出雲町揖屋",
+      "landmark": "黄泉比良坂",
+      "url": "https://www.kankou-shimane.com/destination/20312",
+      "distance_note": "月山富田城の北西約8km",
+      "role": "中海南岸。現世と黄泉国の境界（死気逆流の起点）"
+    },
+    {
+      "id": 15,
+      "name": "月山富田城・勝日高守神社",
+      "act": "第五幕",
+      "modern_location": "安来市広瀬町富田",
+      "landmark": "月山富田城跡 / 勝日高守神社",
+      "url": "https://yasugi-kankou.com/spot/katsuhitakamorijinja/",
+      "distance_note": "杵築から東へ直線約45〜48km（出雲東端）",
+      "role": "最終決戦地（千引の要石・八岐の黒蛇戦）。四方共鳴『国引きの大結界』完結点"
+    }
+  ]
+}
