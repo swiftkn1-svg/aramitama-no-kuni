@@ -8,7 +8,13 @@
   2. 30人マルチ×100日間『数打ち』vs『真打（生涯3振）』銘の流通・噂話確率検証（第7章7-3・第8章8-2）
   3. 『太陽の影の長さ＝瘴気の潮位』＆日蝕（黒き日輪）汽水域濃度計算モデル（第10章10-4）
   4. 属性タグ×引き算による「マルチ解法（別解）試練」判定エンジン（第6章6-2）
+  5. 外殻ゲージ＆部位破壊4拍サイクル・刃の損耗（考証10 §6 / data/combat_5_attributes.json）
 """
+import json
+import math
+from pathlib import Path
+
+COMBAT_JSON = Path(__file__).resolve().parent.parent / "data" / "combat_5_attributes.json"
 
 def calc_craft_quality(skill: float, material: float, facility_mult: float, env_mult: float) -> dict:
     """
@@ -90,6 +96,63 @@ def evaluate_trial_namakura_boar(action_tags: list) -> dict:
         "master_comment": "見事じゃ！理（ことわり）を知ればなまくらでも大猪の牙は折れるわい！" if passed else "馬鹿者！泥が乾いて硬いうちに正面から斬るから刃が欠けるのじゃ！"
     }
 
+
+def load_combat_data(path: Path = COMBAT_JSON) -> dict:
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def blade_state(durability: float, max_durability: float, stages: list) -> str:
+    """残り耐久の割合から刃の状態（刃こぼれ・目釘のゆるみ・曲がり/折れ）を返す"""
+    ratio = durability / max_durability if max_durability else 0.0
+    if ratio <= 0:
+        return next(s["state"] for s in stages if "at_ratio" in s)
+    for s in sorted((s for s in stages if "below_ratio" in s), key=lambda s: s["below_ratio"]):
+        if ratio < s["below_ratio"]:
+            return s["state"]
+    return "健全"
+
+
+def sim_shell_combat_cycle(weapon_id: str, motion_id: str, base_damage: float,
+                           initial_shell: float = 80.0, initial_durability: int = 40,
+                           data: dict = None) -> dict:
+    """
+    外殻破壊4拍サイクル（剥がす➔断つ➔穿つ➔鎮める）の損耗・ダメージ計算モデル
+    モーションの属性配分・衝撃・刃の負担は data/combat_5_attributes.json から読む。
+    - 外殻減少量 = 打撃の割合(blunt/10) × 衝撃値 × base_coefficient(10)
+    - 外殻が残っている間: 刃の負担 × blade_strain_multiplier(3.0)
+    - 外殻破壊後: 切断 × 1.5 / 貫通 × 1.75
+    """
+    data = data or load_combat_data()
+    weapon = next(w for w in data["weapon_classes"] if w["id"] == weapon_id)
+    motion = next(m for m in weapon["motions"] if m["id"] == motion_id)
+    hp = data["hit_parameters"]
+    gauge = data["shell_gauge"]
+
+    blunt_ratio = motion["attrs"].get("blunt", 0) / 10
+    impact = hp["impact_scale"][motion["impact"]]
+    strain = hp["blade_strain_scale"][motion["blade_strain"]]
+    shell_decay_per_hit = blunt_ratio * impact * gauge["base_coefficient"]
+    hits_to_break = math.ceil(initial_shell / shell_decay_per_hit) if shell_decay_per_hit > 0 else None
+
+    has_blade = weapon["blade_strain"] != "なし"
+    intact_strain_mult = gauge["states"]["intact"]["blade_strain_multiplier"]
+    strain_before_break = (hits_to_break or 0) * strain * intact_strain_mult
+    remaining = max(0.0, initial_durability - strain_before_break)
+    stages = data["blade_durability"]["stages"]
+
+    return {
+        "weapon": weapon["name"],
+        "motion": motion["name"],
+        "label": f"打撃{motion['attrs'].get('blunt', 0)}割・衝撃{motion['impact']}{impact}・刃の負担{motion['blade_strain']}",
+        "shell_decay_per_hit": round(shell_decay_per_hit, 1),
+        "hits_to_break": hits_to_break,
+        "strain_before_break": strain_before_break,
+        "remaining_durability": remaining if has_blade else None,
+        "blade_state": blade_state(remaining, initial_durability, stages) if has_blade else "刃なし",
+        "post_break_slash_damage": base_damage * gauge["states"]["broken"]["damage_multiplier"]["slash"],
+    }
+
 if __name__ == "__main__":
     print("=" * 72)
     print("⛩️ 『荒魂の國 - 乱世漂泊録 -』 コアメカニクス検証シミュレータ (v2.2)")
@@ -127,3 +190,17 @@ if __name__ == "__main__":
         tr = evaluate_trial_namakura_boar(tags)
         status = "【合格】" if tr["passed"] else "【不合格】"
         print(f"  - タグ {tags}: 実効装甲={tr['effective_armor']} <= 刀許容={tr['blade_limit']} {status} 『{tr['master_comment']}』")
+
+
+    print("\n[5] 外殻ゲージ計算＆部位破壊4拍サイクル（泥猪の頭 外殻80・なまくら刀耐久40）:")
+    combat_data = load_combat_data()
+    combat_test_cases = [
+        ("uchigatana", "mine_uchi", 20.0),
+        ("uchigatana", "uchikomi", 25.0),
+        ("odachi", "furioroshi", 35.0),
+        ("kanasaibo", "furioroshi", 45.0),
+    ]
+    for w_id, m_id, dmg in combat_test_cases:
+        c_res = sim_shell_combat_cycle(w_id, m_id, dmg, data=combat_data)
+        dur = "刃なし" if c_res["remaining_durability"] is None else f"{c_res['remaining_durability']:g}/40・{c_res['blade_state']}"
+        print(f"  - {c_res['weapon']}【{c_res['motion']}】（{c_res['label']}）: 1撃の外殻削り={c_res['shell_decay_per_hit']} ➔ 外殻80破壊まで【{c_res['hits_to_break']}回】 (破壊時の刃={dur}, 肉露出後斬ダメージ={c_res['post_break_slash_damage']})")
