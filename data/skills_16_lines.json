@@ -307,5 +307,631 @@
       ],
       "type": "隠し秘伝職（台風翌朝の南蛮難破船救助）"
     }
+  ],
+  "draft_extension_10s6": {
+    "source": "docs/02_research/10_sengoku_infantry_realities.md §6",
+    "status": "叩き台（Claude Code 作成）",
+    "date": "2026-11-08",
+    "policy": "Lv0〜50 は「場数で覚える戦場の手」。刃筋・受け流しなどの体の技は Lv51 からの流派の目録（08）に置く",
+    "motion_ref_format": "combat_5_attributes.json の weapon_classes[id].motions[id] を「武器id.モーションid」で指す",
+    "status_legend": {
+      "agreed": "§6-6 で三者合意済み",
+      "draft": "§6-6 の型に沿って Claude が仮に埋めたもの（要アルテ確認）",
+      "pending": "未着手"
+    }
+  },
+  "technique_mastery": {
+    "status": "draft",
+    "stages": [
+      {
+        "stage": "覚えた",
+        "uses": 0,
+        "effect": "使える。失敗演出（空振り・弾かれ）が出やすい"
+      },
+      {
+        "stage": "身についた",
+        "uses": 50,
+        "effect": "振りが速くなり、失敗演出が減る"
+      },
+      {
+        "stage": "冴え",
+        "uses": 200,
+        "effect": "音・手応えが変わる。拍子判定の幅が少し広がる"
+      }
+    ],
+    "timing_check": {
+      "applies_to": "timing_check: true のモーション（拍子斬りなど）",
+      "window_ms_by_lv": {
+        "25": 80,
+        "35": 100,
+        "50": 120
+      },
+      "beats_by_lv": {
+        "25": 1,
+        "35": 2,
+        "50": 3
+      },
+      "on_hit": "快音と威力上昇",
+      "grounding": "雑兵物語「拍子を合わせて叩け」（10 §1-1）"
+    },
+    "failure_fade": "10 §1 の失敗表（転ぶ・空振り・弾かれる・無駄弾）を序盤に起こし、レベルとともに減らす。減ったことはログやNPCの一言で知らせる",
+    "battle_record": "戦歴帳（軍忠状）に「初めて泥鎧を割った」などを記録し、節目でNPCから感状をもらう",
+    "weapon_familiarity": "同じ一振りを使い続けると相性補正。系統10の銘入りの刀とつながる"
+  },
+  "technique_unlocks": [
+    {
+      "line_id": 1,
+      "line_name": "刀剣",
+      "status": "agreed",
+      "axis": "剥がす（峰）→ 断つ（拍子斬り）→ 穿つ（隙間突き）",
+      "techniques": [
+        {
+          "lv": 1,
+          "name": "打ち込み",
+          "vs_human": "真っ向から振り下ろす",
+          "vs_aramitama": "柔らかい所には通る。外殻に当たると弾かれて刃こぼれする（失敗から覚える）",
+          "attrs": {
+            "blunt": 2,
+            "slash": 8
+          },
+          "motion_ref": "uchigatana.uchikomi",
+          "status": "agreed"
+        },
+        {
+          "lv": 10,
+          "name": "見切り",
+          "vs_human": "鎧のない所が分かる",
+          "vs_aramitama": "部位の硬さが、叩いたときの音や色で分かる",
+          "status": "agreed",
+          "kind": "判別"
+        },
+        {
+          "lv": 15,
+          "name": "小手・脚刈り",
+          "vs_human": "手足を斬って武器を落とさせる",
+          "vs_aramitama": "触手・歩脚・泥の蔦を刈って、動きを止める",
+          "attrs": {
+            "slash": 10
+          },
+          "motion_ref": "uchigatana.ashigari",
+          "status": "agreed"
+        },
+        {
+          "lv": 20,
+          "name": "峰・柄頭打ち",
+          "vs_human": "柄や峰で体勢を崩す",
+          "vs_aramitama": "刃を傷めずに泥を削り、剥がす",
+          "attrs": {
+            "blunt": 10
+          },
+          "motion_ref": "uchigatana.mine_uchi",
+          "status": "agreed",
+          "note": "Lv25 より先に置く。剥がしてから斬る順番にするため"
+        },
+        {
+          "lv": 25,
+          "name": "拍子斬り",
+          "vs_human": "胴丸の隙間を裂く連撃",
+          "vs_aramitama": "剥がれた所を、拍子に合わせて深く裂く",
+          "attrs": {
+            "blunt": 1,
+            "slash": 9
+          },
+          "motion_ref": "uchigatana.hyoshi_giri",
+          "status": "agreed"
+        },
+        {
+          "lv": 35,
+          "name": "隙間突き",
+          "vs_human": "喉・脇の下を刺す",
+          "vs_aramitama": "外殻の割れ目から核を突く",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "uchigatana.sukima_tsuki",
+          "status": "agreed"
+        },
+        {
+          "lv": 40,
+          "name": "持ち替え",
+          "vs_human": "脇差・鎧通しに素早く替える",
+          "vs_aramitama": "拾った槍や鉈に替えて、足りない属性を補う",
+          "status": "agreed",
+          "kind": "切り替え"
+        },
+        {
+          "lv": 50,
+          "name": "二の太刀＋気脈見切り",
+          "vs_human": "打ち込みの勢いを殺さず、急所突きへつなぐ二連撃",
+          "vs_aramitama": "荒魂が空振りした後の瘴気の淀み（隙）が見え、そこへ二連撃を打ち込める",
+          "attrs": {
+            "slash": 5,
+            "pierce": 5
+          },
+          "status": "agreed",
+          "chain": [
+            "uchigatana.uchikomi",
+            "uchigatana.sukima_tsuki"
+          ],
+          "graduation": true
+        }
+      ],
+      "lv51_plus": "新陰流・宝蔵院流などの流派の目録と師匠への入門（段階上限 70→85→100）"
+    },
+    {
+      "line_id": 2,
+      "line_name": "長柄",
+      "status": "draft",
+      "axis": "叩く（打撃）→ 突く（貫通）",
+      "techniques": [
+        {
+          "lv": 1,
+          "name": "突き",
+          "vs_human": "まっすぐ突く",
+          "vs_aramitama": "柔らかい所には刺さる。外殻には滑る",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "yari.tsuki",
+          "status": "draft"
+        },
+        {
+          "lv": 10,
+          "name": "間合い取り",
+          "vs_human": "相手の届かない距離が分かる",
+          "vs_aramitama": "荒魂の振り回しが届く範囲が見える",
+          "status": "draft",
+          "kind": "判別"
+        },
+        {
+          "lv": 15,
+          "name": "薙ぎ払い",
+          "vs_human": "足元を払う",
+          "vs_aramitama": "群れた小物や触手をまとめて刈る",
+          "attrs": {
+            "slash": 9,
+            "stagger": 1
+          },
+          "motion_ref": "naginata.naginarai",
+          "status": "draft"
+        },
+        {
+          "lv": 20,
+          "name": "叩き",
+          "vs_human": "上から叩いて構えを崩す",
+          "vs_aramitama": "柄で泥鎧を叩いて剥がす",
+          "attrs": {
+            "blunt": 8,
+            "stagger": 2
+          },
+          "motion_ref": "yari.tataki",
+          "status": "draft",
+          "grounding": "雑兵物語「突くな、上から揃って叩け」（10 §1-1）"
+        },
+        {
+          "lv": 25,
+          "name": "振り下ろし（金砕棒・大槌）",
+          "vs_human": "盾ごと叩き潰す",
+          "vs_aramitama": "外殻を一気に割る",
+          "attrs": {
+            "blunt": 10
+          },
+          "motion_ref": "kanasaibo.furioroshi",
+          "status": "draft"
+        },
+        {
+          "lv": 35,
+          "name": "縫い止め",
+          "vs_human": "馬の腹を突いて落とす",
+          "vs_aramitama": "地面へ縫い止めて動きを止める",
+          "attrs": {
+            "pierce": 8,
+            "stagger": 2
+          },
+          "motion_ref": "yari.nuidome",
+          "status": "draft"
+        },
+        {
+          "lv": 40,
+          "name": "揃い突き",
+          "vs_human": "仲間と穂先を揃える",
+          "vs_aramitama": "割れた所を揃って突く（仲間がいると強い）",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "nagae.soroi_tsuki",
+          "status": "draft"
+        },
+        {
+          "lv": 50,
+          "name": "叩いて突く二段",
+          "vs_human": "叩いて構えを崩し、そのまま突く",
+          "vs_aramitama": "叩き割った割れ目へ、間を置かず核を突く",
+          "attrs": {
+            "blunt": 5,
+            "pierce": 5
+          },
+          "status": "draft",
+          "chain": [
+            "yari.tataki",
+            "yari.tsuki"
+          ],
+          "graduation": true
+        }
+      ]
+    },
+    {
+      "line_id": 3,
+      "line_name": "組討・体術",
+      "status": "draft",
+      "axis": "崩す（組む）→ 抑える → 刺す（鎧通し）",
+      "techniques": [
+        {
+          "lv": 1,
+          "name": "組み付き",
+          "vs_human": "相手に組み付く",
+          "vs_aramitama": "小物の荒魂にしがみついて動きを鈍らせる",
+          "attrs": {
+            "stagger": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 10,
+          "name": "重心見切り",
+          "vs_human": "相手の重心が分かる",
+          "vs_aramitama": "巨体がよろける向きが分かる",
+          "status": "draft",
+          "kind": "判別"
+        },
+        {
+          "lv": 15,
+          "name": "足払い",
+          "vs_human": "足を払って倒す",
+          "vs_aramitama": "歩脚を払って泥に倒す",
+          "attrs": {
+            "stagger": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 20,
+          "name": "投げ",
+          "vs_human": "腰で投げる",
+          "vs_aramitama": "小物を岩や水へ投げつける",
+          "attrs": {
+            "blunt": 4,
+            "stagger": 6
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 25,
+          "name": "鎧通し",
+          "vs_human": "倒れた相手の鎧の隙間を刺す",
+          "vs_aramitama": "倒れて晒した腹の継ぎ目を刺す",
+          "attrs": {
+            "pierce": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 35,
+          "name": "抑え込み",
+          "vs_human": "首を取るまで抑える",
+          "vs_aramitama": "抑えている間、仲間の攻撃が通りやすくなる",
+          "attrs": {
+            "stagger": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 40,
+          "name": "泥中の受け身",
+          "vs_human": "倒されてもすぐ起きる",
+          "vs_aramitama": "吹き飛ばされても、泥の中で起き上がれる",
+          "status": "draft",
+          "kind": "守り"
+        },
+        {
+          "lv": 50,
+          "name": "組み伏せ＋鎧通し",
+          "vs_human": "組み伏せたまま刺す二連",
+          "vs_aramitama": "倒した巨体の継ぎ目へ、そのまま刃を通す",
+          "attrs": {
+            "pierce": 5,
+            "stagger": 5
+          },
+          "status": "draft",
+          "graduation": true
+        }
+      ]
+    },
+    {
+      "line_id": 4,
+      "line_name": "弓術",
+      "status": "draft",
+      "axis": "射落とす → 射切る → 射抜く（核・眼）",
+      "techniques": [
+        {
+          "lv": 1,
+          "name": "射ち",
+          "vs_human": "矢を射る",
+          "vs_aramitama": "柔らかい所や眼に刺さる",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "yumi.subiki",
+          "status": "draft"
+        },
+        {
+          "lv": 10,
+          "name": "風読み",
+          "vs_human": "風で矢がどれだけ流れるか分かる",
+          "vs_aramitama": "瘴気の流れで矢がそれるのが分かる",
+          "status": "draft",
+          "kind": "判別"
+        },
+        {
+          "lv": 15,
+          "name": "雁股射ち",
+          "vs_human": "旗竿や縄を射切る",
+          "vs_aramitama": "蜘蛛糸・泥の蔦を射切る",
+          "attrs": {
+            "slash": 10
+          },
+          "motion_ref": "yumi.karimata",
+          "status": "draft"
+        },
+        {
+          "lv": 20,
+          "name": "鳴鏑",
+          "vs_human": "音で馬や兵を怯ませる",
+          "vs_aramitama": "音で荒魂を怯ませる（霊威はない）",
+          "attrs": {
+            "stagger": 10
+          },
+          "motion_ref": "yumi.kabura",
+          "status": "draft"
+        },
+        {
+          "lv": 25,
+          "name": "早矢",
+          "vs_human": "続けて二の矢を射る",
+          "vs_aramitama": "隙に矢を重ねる",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "yumi.subiki",
+          "status": "draft",
+          "hits": 2
+        },
+        {
+          "lv": 35,
+          "name": "眼射ち",
+          "vs_human": "顔や隙間を狙う",
+          "vs_aramitama": "眼や外殻の割れ目から核を射抜く",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "yumi.subiki",
+          "status": "draft"
+        },
+        {
+          "lv": 40,
+          "name": "矢の持ち替え",
+          "vs_human": "矢の種類を素早く替える",
+          "vs_aramitama": "尖り矢・雁股・鏑を相手に合わせて替える",
+          "status": "draft",
+          "kind": "切り替え"
+        },
+        {
+          "lv": 50,
+          "name": "射落とし",
+          "vs_human": "馬上の敵を射落とす",
+          "vs_aramitama": "飛ぶ・登る荒魂を射落とし、仲間のとどめにつなぐ（鵺退治）",
+          "attrs": {
+            "pierce": 7,
+            "stagger": 3
+          },
+          "status": "draft",
+          "graduation": true
+        }
+      ]
+    },
+    {
+      "line_id": 5,
+      "line_name": "銃砲・火器",
+      "status": "draft",
+      "axis": "引き付ける → 撃つ（核・脚）",
+      "techniques": [
+        {
+          "lv": 1,
+          "name": "一発",
+          "vs_human": "狙って撃つ",
+          "vs_aramitama": "当たれば重いが、外れやすい（無駄弾）",
+          "attrs": {
+            "blunt": 2,
+            "pierce": 8
+          },
+          "motion_ref": "teppo.ippatsu",
+          "status": "draft"
+        },
+        {
+          "lv": 10,
+          "name": "火縄の見切り",
+          "vs_human": "火縄や火薬の湿りが分かる",
+          "vs_aramitama": "瘴気の湿りで不発になりやすい時が分かる",
+          "status": "draft",
+          "kind": "判別"
+        },
+        {
+          "lv": 15,
+          "name": "早合",
+          "vs_human": "弾込めが速くなる",
+          "vs_aramitama": "次の隙までに撃ち直せる",
+          "status": "draft",
+          "kind": "準備"
+        },
+        {
+          "lv": 20,
+          "name": "馬を先に撃つ",
+          "vs_human": "馬を撃って落とす",
+          "vs_aramitama": "脚を撃って動きを止める",
+          "attrs": {
+            "pierce": 8,
+            "stagger": 2
+          },
+          "motion_ref": "teppo.ippatsu",
+          "status": "draft",
+          "grounding": "雑兵物語（10 §1-1）"
+        },
+        {
+          "lv": 25,
+          "name": "焙烙玉",
+          "vs_human": "投げて破裂させる",
+          "vs_aramitama": "外殻を割り、よろけさせる",
+          "attrs": {
+            "blunt": 7,
+            "stagger": 3
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 35,
+          "name": "割れ目撃ち",
+          "vs_human": "鎧の隙間を撃つ",
+          "vs_aramitama": "外殻の割れ目から核を撃ち抜く",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "teppo.ippatsu",
+          "status": "draft"
+        },
+        {
+          "lv": 40,
+          "name": "筒の手入れ",
+          "vs_human": "撃ち続けても暴発しにくい",
+          "vs_aramitama": "連戦でも筒が傷まない",
+          "status": "draft",
+          "kind": "手入れ"
+        },
+        {
+          "lv": 50,
+          "name": "引き付け撃ち",
+          "vs_human": "近くまで引き付けて必ず当てる",
+          "vs_aramitama": "突進を引き付け、口や核を撃ち抜く",
+          "attrs": {
+            "pierce": 10
+          },
+          "motion_ref": "teppo.ippatsu",
+          "status": "draft",
+          "grounding": "雑兵物語の「無駄弾を撃つな」（10 §1-1）",
+          "graduation": true
+        }
+      ]
+    },
+    {
+      "line_id": 6,
+      "line_name": "忍び（透破・乱波）",
+      "status": "draft",
+      "axis": "隠れる → 縛る・潰す → 罠で穿つ",
+      "techniques": [
+        {
+          "lv": 1,
+          "name": "忍び足",
+          "vs_human": "足音を消す",
+          "vs_aramitama": "荒魂に気付かれずに近づく",
+          "status": "draft",
+          "kind": "隠密"
+        },
+        {
+          "lv": 10,
+          "name": "気配見切り",
+          "vs_human": "人の気配が分かる",
+          "vs_aramitama": "隠れた荒魂や核の気配が分かる",
+          "status": "draft",
+          "kind": "判別"
+        },
+        {
+          "lv": 15,
+          "name": "張り縄",
+          "vs_human": "縄で足を取る",
+          "vs_aramitama": "突進を縄で止める",
+          "attrs": {
+            "stagger": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 20,
+          "name": "目潰し",
+          "vs_human": "目潰しで視界を奪う",
+          "vs_aramitama": "眼のある荒魂の狙いを外させる",
+          "attrs": {
+            "stagger": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 25,
+          "name": "鉤縄",
+          "vs_human": "高所へ登る・引き倒す",
+          "vs_aramitama": "高い所の弱点へ取り付く／小物を引き倒す",
+          "attrs": {
+            "stagger": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 35,
+          "name": "竹槍罠",
+          "vs_human": "落とし穴に竹槍を仕込む",
+          "vs_aramitama": "罠へ誘い込み、腹を穿つ",
+          "attrs": {
+            "pierce": 10
+          },
+          "status": "draft"
+        },
+        {
+          "lv": 40,
+          "name": "道具の持ち替え",
+          "vs_human": "道具を素早く替える",
+          "vs_aramitama": "相手に合わせて縄・目潰し・罠を替える",
+          "status": "draft",
+          "kind": "切り替え"
+        },
+        {
+          "lv": 50,
+          "name": "罠つなぎ",
+          "vs_human": "縄で倒し、罠へ落とす",
+          "vs_aramitama": "張り縄で倒した先に竹槍罠を置く二段構え",
+          "attrs": {
+            "pierce": 5,
+            "stagger": 5
+          },
+          "status": "draft",
+          "graduation": true
+        }
+      ]
+    },
+    {
+      "line_id": 7,
+      "line_name": "神道祭祀（社人・巫女）",
+      "status": "pending",
+      "note": "霊威（神道）の手。09 の考証（祓・鳴弦・湯立など）をもとに別途作る"
+    },
+    {
+      "line_id": 8,
+      "line_name": "仏門法術・僧兵",
+      "status": "pending",
+      "note": "霊威（仏門）の手。09 の考証（護摩・修験など）をもとに別途作る"
+    },
+    {
+      "line_id": 9,
+      "line_name": "陰陽道・天文",
+      "status": "pending",
+      "note": "霊威（陰陽道）の手。09 の考証（反閇・身固め・方違えなど）をもとに別途作る"
+    }
   ]
 }

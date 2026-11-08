@@ -92,5 +92,616 @@
         "上位師匠への紹介状"
       ]
     }
+  ],
+  "draft_extension_10s6": {
+    "source": "docs/02_research/10_sengoku_infantry_realities.md §6",
+    "status": "叩き台（Claude Code 作成。数値はシミュレータでの検証前の仮置き）",
+    "date": "2026-11-08",
+    "status_legend": {
+      "agreed": "§6 で三者合意済みの内容",
+      "draft": "§6 の方針に沿って Claude が仮に埋めたもの（要アルテ確認）"
+    }
+  },
+  "hit_parameters": {
+    "attrs": "属性配分。5属性の比率を合計10で書く（例: slash 8 / blunt 2）。計算では10で割って0〜1にする",
+    "impact": "衝撃。一撃の重さ。外殻を割る量とよろけに効く",
+    "blade_strain": "刃の負担。刃こぼれ・目釘のゆるみの溜まり方。刃のない武器は「なし」",
+    "impact_scale": {
+      "小": 1,
+      "中": 2,
+      "大": 3,
+      "特大": 5
+    },
+    "blade_strain_scale": {
+      "なし": 0,
+      "小": 1,
+      "中": 2,
+      "大": 3
+    },
+    "hits": "連撃は hits に回数を書く（拍子斬り 小×3 など）。衝撃・刃の負担は一打ごと"
+  },
+  "spiritual_rule": {
+    "status": "agreed",
+    "combat_lines_spiritual": 0,
+    "rule": "戦闘系（系統1〜6）の手は霊威を持たない。荒魂は倒せるが、鎮めて和魂に戻すことはできない",
+    "pacify_sources": [
+      "系統7〜9の法術（神道祭祀・仏門法術・陰陽道）",
+      "銘入りの刀（生産系・御番鍛冶が打ったもの）",
+      "清めの塩・神酒などの消耗品"
+    ],
+    "grounding": [
+      "鵺退治（弓で射落とし刀でとどめ）",
+      "俵藤太の唾をつけた矢",
+      "膝丸・髭切の名刀伝承"
+    ]
+  },
+  "shell_gauge": {
+    "status": "draft",
+    "per_part": true,
+    "shell_damage_formula": "外殻の減少量 = 打撃の割合(blunt/10) × 衝撃値 × base_coefficient",
+    "base_coefficient": 10,
+    "states": {
+      "intact": {
+        "label": "外殻が残っている",
+        "damage_multiplier": {
+          "blunt": 0.6,
+          "slash": 0.25,
+          "pierce": 0.4,
+          "stagger": 1.0,
+          "spiritual": 1.0
+        },
+        "blade_strain_multiplier": 3.0,
+        "note": "斬ると弾かれ、刃の負担がはね上がる。崩しと霊威は外殻の影響を受けない"
+      },
+      "broken": {
+        "label": "外殻が割れて肉や核が出ている",
+        "damage_multiplier": {
+          "blunt": 1.0,
+          "slash": 1.5,
+          "pierce": 1.75,
+          "stagger": 1.0,
+          "spiritual": 1.0
+        },
+        "blade_strain_multiplier": 1.0,
+        "note": "切断で断ち、貫通で核を穿つ"
+      }
+    },
+    "kill_order": [
+      {
+        "beat": 1,
+        "name": "崩す・剥がす",
+        "attrs": [
+          "blunt",
+          "stagger"
+        ]
+      },
+      {
+        "beat": 2,
+        "name": "断つ",
+        "attrs": [
+          "slash"
+        ]
+      },
+      {
+        "beat": 3,
+        "name": "穿つ",
+        "attrs": [
+          "pierce"
+        ]
+      },
+      {
+        "beat": 4,
+        "name": "鎮める",
+        "attrs": [
+          "spiritual"
+        ]
+      }
+    ],
+    "softening": "水辺でふやかす・酒で酔わせるなど、環境や道具で外殻を下げる手も残す（試練①の別解と同じ考え方）",
+    "example_parts": [
+      {
+        "id": "mud_boar_head",
+        "name": "泥猪の泥鎧（頭）",
+        "shell": 80,
+        "note": "シミュレータ試練①の初期装甲80に合わせた"
+      },
+      {
+        "id": "centipede_segment",
+        "name": "黒鉄の大百足の鋼殻（胴節）",
+        "shell": 150
+      },
+      {
+        "id": "rock_skin",
+        "name": "岩の荒魂の岩肌",
+        "shell": 120
+      },
+      {
+        "id": "human_domaru",
+        "name": "人：胴丸",
+        "shell": 40
+      },
+      {
+        "id": "human_bare_limb",
+        "name": "人：鎧のない手足",
+        "shell": 0
+      }
+    ],
+    "expected_hits_check": {
+      "note": "泥猪の頭（外殻80）を割るのに要る回数の目安。シミュレータで確かめる",
+      "uchigatana_mine_uchi": "打撃10/10 × 小1 × 10 = 10 → 8回",
+      "uchigatana_uchikomi": "打撃2/10 × 中2 × 10 = 4 → 20回（その間に刃こぼれする）",
+      "odachi_furioroshi": "打撃5/10 × 大3 × 10 = 15 → 6回",
+      "otsuchi_furioroshi": "打撃10/10 × 特大5 × 10 = 50 → 2回"
+    }
+  },
+  "blade_durability": {
+    "status": "draft",
+    "strain_per_hit": "刃の負担値 × 外殻状態の倍率（外殻が残っていれば3）",
+    "max_durability_examples": {
+      "なまくら古刀": 40,
+      "数打ち": 100,
+      "業物": 160,
+      "真打": 220
+    },
+    "stages": [
+      {
+        "below_ratio": 0.5,
+        "state": "刃こぼれ",
+        "effect": "切断ダメージ -20%"
+      },
+      {
+        "below_ratio": 0.25,
+        "state": "目釘のゆるみ",
+        "effect": "振りが遅くなる。続けると刀身が抜ける危険"
+      },
+      {
+        "at_ratio": 0.0,
+        "state": "曲がり・折れ",
+        "effect": "使えない。脇差や拾った武器に持ち替える"
+      }
+    ],
+    "repair": {
+      "field_first_aid": {
+        "label": "応急（陣中の手入れ）",
+        "restore_cap_ratio": 0.6,
+        "actions": [
+          "拭い",
+          "目釘を締め直す",
+          "逆輪・柄の点検"
+        ]
+      },
+      "full_repair": {
+        "label": "本修理",
+        "by": "研師・鍛冶（系統10 採掘・鍛冶）",
+        "restore_cap_ratio": 1.0
+      }
+    },
+    "grounding": "安物の刀は鎧に当たると「鍋の柄のように」曲がる（雑兵物語、10 §1-1）"
+  },
+  "weapon_classes": [
+    {
+      "id": "uchigatana",
+      "name": "打刀",
+      "skill_line": 1,
+      "status": "agreed",
+      "stars": {
+        "impact": 2,
+        "cut": 4,
+        "pierce": 3,
+        "reach": 2,
+        "tempo": 5
+      },
+      "blade_strain": "大",
+      "character": "万能・手数型。一撃は軽い",
+      "motions": [
+        {
+          "id": "uchikomi",
+          "name": "打ち込み",
+          "attrs": {
+            "blunt": 2,
+            "slash": 8
+          },
+          "impact": "中",
+          "blade_strain": "大",
+          "use": "柔らかい所に。外殻に当てると刃こぼれする",
+          "status": "agreed"
+        },
+        {
+          "id": "ashigari",
+          "name": "脚刈り",
+          "attrs": {
+            "slash": 10
+          },
+          "impact": "小",
+          "blade_strain": "中",
+          "use": "触手・歩脚を刈る（本領）",
+          "status": "agreed"
+        },
+        {
+          "id": "mine_uchi",
+          "name": "峰・柄頭打ち",
+          "attrs": {
+            "blunt": 10
+          },
+          "impact": "小",
+          "blade_strain": "なし",
+          "use": "刃を守りながら外殻を削る。何度も打つ必要がある",
+          "status": "agreed"
+        },
+        {
+          "id": "hyoshi_giri",
+          "name": "拍子斬り",
+          "attrs": {
+            "blunt": 1,
+            "slash": 9
+          },
+          "impact": "小",
+          "blade_strain": "中",
+          "use": "露出した肉に。拍子が合うと威力が上がる",
+          "status": "agreed",
+          "hits": 3,
+          "timing_check": true
+        },
+        {
+          "id": "sukima_tsuki",
+          "name": "隙間突き",
+          "attrs": {
+            "pierce": 10
+          },
+          "impact": "小",
+          "blade_strain": "小",
+          "use": "割れ目の核に。深さは槍に及ばない",
+          "status": "agreed"
+        }
+      ]
+    },
+    {
+      "id": "tachi",
+      "name": "太刀",
+      "skill_line": 1,
+      "status": "draft",
+      "stars": {
+        "impact": 3,
+        "cut": 5,
+        "pierce": 2,
+        "reach": 3,
+        "tempo": 3
+      },
+      "blade_strain": "中",
+      "character": "§6-4「太刀・大太刀」の軽い側",
+      "motions": [
+        {
+          "id": "uchikomi",
+          "name": "打ち込み",
+          "attrs": {
+            "blunt": 2,
+            "slash": 8
+          },
+          "impact": "中",
+          "blade_strain": "中",
+          "use": "打刀より重く、刃の負担はやや軽い",
+          "status": "draft"
+        },
+        {
+          "id": "nagi",
+          "name": "薙ぎ",
+          "attrs": {
+            "blunt": 1,
+            "slash": 9
+          },
+          "impact": "中",
+          "blade_strain": "中",
+          "use": "露出した肉を広く裂く",
+          "status": "draft"
+        }
+      ]
+    },
+    {
+      "id": "odachi",
+      "name": "大太刀",
+      "skill_line": 1,
+      "status": "draft",
+      "stars": {
+        "impact": 4,
+        "cut": 5,
+        "pierce": 2,
+        "reach": 3,
+        "tempo": 2
+      },
+      "blade_strain": "中",
+      "character": "§6-4「太刀・大太刀」の重い側。重さで外殻も割れる",
+      "motions": [
+        {
+          "id": "furioroshi",
+          "name": "振り下ろし",
+          "attrs": {
+            "blunt": 5,
+            "slash": 5
+          },
+          "impact": "大",
+          "blade_strain": "中",
+          "use": "重さで叩き割る",
+          "status": "draft"
+        },
+        {
+          "id": "hikigiri",
+          "name": "引き斬り",
+          "attrs": {
+            "slash": 10
+          },
+          "impact": "中",
+          "blade_strain": "中",
+          "use": "割れた所を深く斬る",
+          "status": "draft"
+        }
+      ]
+    },
+    {
+      "id": "naginata",
+      "name": "薙刀",
+      "skill_line": 2,
+      "status": "draft",
+      "stars": {
+        "impact": 3,
+        "cut": 4,
+        "pierce": 2,
+        "reach": 4,
+        "tempo": 3
+      },
+      "blade_strain": "中",
+      "character": "振り回して範囲を払う。脚や触手を刈るのが得意",
+      "motions": [
+        {
+          "id": "naginarai",
+          "name": "薙ぎ払い",
+          "attrs": {
+            "slash": 9,
+            "stagger": 1
+          },
+          "impact": "中",
+          "blade_strain": "中",
+          "use": "範囲の脚・触手を刈る",
+          "status": "draft",
+          "area": true
+        },
+        {
+          "id": "sunebarai",
+          "name": "脛払い",
+          "attrs": {
+            "slash": 8,
+            "stagger": 2
+          },
+          "impact": "中",
+          "blade_strain": "中",
+          "use": "足元を払って転ばせる",
+          "status": "draft"
+        },
+        {
+          "id": "ishizuki",
+          "name": "石突き",
+          "attrs": {
+            "blunt": 10
+          },
+          "impact": "小",
+          "blade_strain": "なし",
+          "use": "柄の尻で外殻を小突く",
+          "status": "draft"
+        }
+      ]
+    },
+    {
+      "id": "yari",
+      "name": "素槍・大身槍",
+      "skill_line": 2,
+      "status": "draft",
+      "stars": {
+        "impact": 2,
+        "cut": 1,
+        "pierce": 5,
+        "reach": 4,
+        "tempo": 3
+      },
+      "blade_strain": "小",
+      "character": "核を突く本職。間合いが長い",
+      "motions": [
+        {
+          "id": "tsuki",
+          "name": "突き",
+          "attrs": {
+            "pierce": 10
+          },
+          "impact": "中",
+          "blade_strain": "小",
+          "use": "割れ目から核を突く",
+          "status": "draft"
+        },
+        {
+          "id": "nuidome",
+          "name": "縫い止め",
+          "attrs": {
+            "pierce": 8,
+            "stagger": 2
+          },
+          "impact": "中",
+          "blade_strain": "小",
+          "use": "地面へ縫い止めて動きを止める（要釘とつながる）",
+          "status": "draft"
+        },
+        {
+          "id": "tataki",
+          "name": "叩き",
+          "attrs": {
+            "blunt": 8,
+            "stagger": 2
+          },
+          "impact": "中",
+          "blade_strain": "なし",
+          "use": "柄で上から叩く",
+          "status": "draft"
+        }
+      ]
+    },
+    {
+      "id": "nagae",
+      "name": "長柄（集団の槍）",
+      "skill_line": 2,
+      "status": "draft",
+      "stars": {
+        "impact": 3,
+        "cut": 1,
+        "pierce": 4,
+        "reach": 5,
+        "tempo": 2
+      },
+      "blade_strain": "小",
+      "character": "上から叩いて外殻を割り、突いて核を狙う（10 §1「叩け」）",
+      "motions": [
+        {
+          "id": "tataki_oroshi",
+          "name": "叩き下ろし",
+          "attrs": {
+            "blunt": 8,
+            "stagger": 2
+          },
+          "impact": "大",
+          "blade_strain": "なし",
+          "use": "揃って上から叩く。突かない",
+          "status": "draft",
+          "group_bonus": true
+        },
+        {
+          "id": "soroi_tsuki",
+          "name": "揃い突き",
+          "attrs": {
+            "pierce": 10
+          },
+          "impact": "中",
+          "blade_strain": "小",
+          "use": "割れた所を揃って突く",
+          "status": "draft",
+          "group_bonus": true
+        }
+      ]
+    },
+    {
+      "id": "kanasaibo",
+      "name": "金砕棒・大槌",
+      "skill_line": 2,
+      "status": "agreed",
+      "stars": {
+        "impact": 5,
+        "cut": 0,
+        "pierce": 0,
+        "reach": 2,
+        "tempo": 1
+      },
+      "blade_strain": "なし",
+      "character": "一撃が重い。刃がないので切れ味に左右されない。外殻を下げる本職",
+      "motions": [
+        {
+          "id": "furioroshi",
+          "name": "振り下ろし",
+          "attrs": {
+            "blunt": 10
+          },
+          "impact": "特大",
+          "blade_strain": "なし",
+          "use": "外殻を一気に割る",
+          "status": "agreed"
+        },
+        {
+          "id": "yokonagi",
+          "name": "横薙ぎ",
+          "attrs": {
+            "blunt": 8,
+            "stagger": 2
+          },
+          "impact": "大",
+          "blade_strain": "なし",
+          "use": "範囲を払い、よろけさせる",
+          "status": "agreed",
+          "area": true
+        }
+      ]
+    },
+    {
+      "id": "yumi",
+      "name": "弓",
+      "skill_line": 4,
+      "status": "draft",
+      "stars": {
+        "impact": 1,
+        "cut": 0,
+        "pierce": 4,
+        "reach": 5,
+        "tempo": 2
+      },
+      "blade_strain": "なし",
+      "character": "遠くから核や眼を射抜く",
+      "motions": [
+        {
+          "id": "subiki",
+          "name": "射ち（尖り矢）",
+          "attrs": {
+            "pierce": 10
+          },
+          "impact": "小",
+          "blade_strain": "なし",
+          "use": "眼や割れ目を射抜く",
+          "status": "draft"
+        },
+        {
+          "id": "karimata",
+          "name": "雁股の矢",
+          "attrs": {
+            "slash": 10
+          },
+          "impact": "小",
+          "blade_strain": "なし",
+          "use": "縄・糸・蔓を射切る",
+          "status": "draft"
+        },
+        {
+          "id": "kabura",
+          "name": "鳴鏑",
+          "attrs": {
+            "stagger": 10
+          },
+          "impact": "小",
+          "blade_strain": "なし",
+          "use": "音で怯ませる。霊威は持たない（清めは系統7）",
+          "status": "draft"
+        }
+      ]
+    },
+    {
+      "id": "teppo",
+      "name": "鉄砲",
+      "skill_line": 5,
+      "status": "draft",
+      "stars": {
+        "impact": 3,
+        "cut": 0,
+        "pierce": 4,
+        "reach": 5,
+        "tempo": 1
+      },
+      "blade_strain": "なし",
+      "character": "一発の衝撃が大きい。弾込めが遅い",
+      "motions": [
+        {
+          "id": "ippatsu",
+          "name": "一発",
+          "attrs": {
+            "blunt": 2,
+            "pierce": 8
+          },
+          "impact": "大",
+          "blade_strain": "なし",
+          "use": "引き付けて撃つ。外殻も少し削る",
+          "status": "draft"
+        }
+      ]
+    }
   ]
 }
