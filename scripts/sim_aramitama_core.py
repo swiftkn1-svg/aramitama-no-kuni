@@ -121,7 +121,8 @@ def sim_shell_combat_cycle(weapon_id: str, motion_id: str, base_damage: float,
     モーションの属性配分・衝撃・刃の負担は data/combat_5_attributes.json から読む。
     - 外殻減少量 = 打撃の割合(blunt/10) × 衝撃値 × base_coefficient(10)
     - 外殻が残っている間: 刃の負担 × blade_strain_multiplier(3.0)
-    - 外殻破壊後: 切断 × 1.5 / 貫通 × 1.75
+    - 外殻破壊後: 打撃 × 1.0 / 切断 × 1.5 / 貫通 × 1.75 を、手の属性配分で加重平均する
+      （刃のない道具に斬ダメージが付かないようにするため）
     """
     data = data or load_combat_data()
     weapon = next(w for w in data["weapon_classes"] if w["id"] == weapon_id)
@@ -141,6 +142,11 @@ def sim_shell_combat_cycle(weapon_id: str, motion_id: str, base_damage: float,
     remaining = max(0.0, initial_durability - strain_before_break)
     stages = data["blade_durability"]["stages"]
 
+    broken_mult = gauge["states"]["broken"]["damage_multiplier"]
+    attrs = motion["attrs"]
+    attr_total = sum(attrs.values()) or 1
+    post_break_mult = sum(v / attr_total * broken_mult.get(k, 1.0) for k, v in attrs.items())
+
     return {
         "weapon": weapon["name"],
         "motion": motion["name"],
@@ -150,7 +156,7 @@ def sim_shell_combat_cycle(weapon_id: str, motion_id: str, base_damage: float,
         "strain_before_break": strain_before_break,
         "remaining_durability": remaining if has_blade else None,
         "blade_state": blade_state(remaining, initial_durability, stages) if has_blade else "刃なし",
-        "post_break_slash_damage": base_damage * gauge["states"]["broken"]["damage_multiplier"]["slash"],
+        "post_break_damage": round(base_damage * post_break_mult, 1),
     }
 
 if __name__ == "__main__":
@@ -206,4 +212,4 @@ if __name__ == "__main__":
     for w_id, m_id, dmg in combat_test_cases:
         c_res = sim_shell_combat_cycle(w_id, m_id, dmg, data=combat_data)
         dur = "刃なし" if c_res["remaining_durability"] is None else f"{c_res['remaining_durability']:g}/40・{c_res['blade_state']}"
-        print(f"  - {c_res['weapon']}【{c_res['motion']}】（{c_res['label']}）: 1撃の外殻削り={c_res['shell_decay_per_hit']} ➔ 外殻80破壊まで【{c_res['hits_to_break']}回】 (破壊時の刃={dur}, 肉露出後斬ダメージ={c_res['post_break_slash_damage']})")
+        print(f"  - {c_res['weapon']}【{c_res['motion']}】（{c_res['label']}）: 1撃の外殻削り={c_res['shell_decay_per_hit']} ➔ 外殻80破壊まで【{c_res['hits_to_break']}回】 (破壊時の刃={dur}, 外殻破壊後の1撃={c_res['post_break_damage']})")

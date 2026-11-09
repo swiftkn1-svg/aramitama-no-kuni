@@ -127,13 +127,40 @@
     "pacify_sources": [
       "系統7〜9の法術（神道祭祀・仏門法術・陰陽道）",
       "銘入りの刀（生産系・御番鍛冶が打ったもの）",
+      "由緒ある霊器（神剣・妖刀など。下の spiritual_relics を参照）",
       "清めの塩・神酒などの消耗品"
     ],
     "grounding": [
       "鵺退治（弓で射落とし刀でとどめ）",
       "俵藤太の唾をつけた矢",
       "膝丸・髭切の名刀伝承"
-    ]
+    ],
+    "spiritual_relics": {
+      "status": "draft",
+      "date": "2026-11-10",
+      "proposal": "オーナー提案。銘入りの刀のほかに、最初から霊威を纏った装備を置く",
+      "kinds": [
+        {
+          "kind": "神剣・神宝",
+          "nature": "社に伝わる宝剣や奉納刀。鎮める力を持つ",
+          "acquisition": "一宮・古社の試練や奉納の返礼で『預かる』。祟り地の跡や荒魂を鎮めた跡から見つかることもある",
+          "constraint": "穢れ（殺生・瘴気）が溜まると力が落ち、社で清め直す必要がある。役目を終えたら返納する"
+        },
+        {
+          "kind": "妖刀・祟り物",
+          "nature": "荒魂や怨念が宿った刀。鎮める力ではなく、荒魂を斬り伏せる霊威を持つ",
+          "acquisition": "祟り村や古戦場、荒魂の巣の奥で見つかる",
+          "constraint": "持ち主を蝕む代償がある（瘴気をため込む・NPC に忌まれる）。鎮めて和魂に変えれば神剣側に移る"
+        }
+      ],
+      "rules": [
+        "鍛冶では作れない。生産系の銘入りの刀（真打）とは入手経路で棲み分ける",
+        "数は一点物で絞る。同じ霊器は同時に一人しか持てない",
+        "宝箱から無作為に出す形ではなく、由緒（どこの社の・誰の怨念か）とセットで置く",
+        "霊威を持つのは装備の側。戦闘系の手そのものは霊威0のまま",
+        "付喪神（通算100年の継承）と同じ系譜に置き、人の手を経た道具が霊器になる筋道も残す"
+      ]
+    }
   },
   "shell_gauge": {
     "status": "draft",
@@ -724,6 +751,8 @@
       "name": "大槌（向こう鎚・職人道具）",
       "skill_line": null,
       "is_craft_tool": true,
+      "origin_skill": "系統10 採掘・鍛冶",
+      "handle_strain": "中",
       "status": "agreed",
       "stars": {
         "impact": 4,
@@ -742,17 +771,21 @@
             "blunt": 10
           },
           "impact": "中",
+          "charged_impact": "大",
           "blade_strain": "なし",
           "use": "外殻80を4回で割る（溜めきれば衝撃大3で3回）",
           "status": "agreed"
         }
-      ]
+      ],
+      "weakness": "溜めが長い。硬い外殻を叩き続けると柄が傷む（木工で挿げ替え）"
     },
     {
       "id": "kakeya",
       "name": "掛矢（大木槌・職人道具）",
       "skill_line": null,
       "is_craft_tool": true,
+      "origin_skill": "系統11 伐採・木工",
+      "handle_strain": "大",
       "status": "agreed",
       "stars": {
         "impact": 3,
@@ -776,7 +809,34 @@
           "use": "外殻80を5回で割る。頭が木なので鋼殻・岩肌には効き半分",
           "status": "agreed"
         }
-      ]
+      ],
+      "weakness": "頭が木製のため割れやすく、鋼殻・岩肌には効果が半減する"
+    },
+    {
+      "id": "tagane_tsuchi",
+      "name": "鏨（たがね）と手槌（職人道具）",
+      "skill_line": null,
+      "is_craft_tool": true,
+      "origin_skill": "系統10 採掘・鍛冶",
+      "handle_strain": "小",
+      "status": "agreed",
+      "blade_strain": "なし",
+      "character": "鉱夫が岩を割る道具。戦いでは岩肌や外殻の割れ目に鏨を当てて手槌で打ち込む",
+      "motions": [
+        {
+          "id": "uchikomi",
+          "name": "鏨打ち",
+          "attrs": {
+            "pierce": 6,
+            "blunt": 4
+          },
+          "impact": "小",
+          "blade_strain": "なし",
+          "use": "割れ目に鏨を当てて打ち込む。外殻80を割るには20回かかる（局所の穿孔向き）",
+          "status": "agreed"
+        }
+      ],
+      "weakness": "リーチが極端に短い。岩肌や割れ目の局所穿孔向き（戦国の銀山手掘り考証に基づく）"
     }
   ],
   "stagger_and_grappling_rules": {
@@ -820,45 +880,11 @@
   "craft_tools_in_combat": {
     "status": "agreed",
     "policy": "職人用の道具であり、独立した戦闘スキルツリーは持たない。道具自体の数値で誰でも振れるが、本職の武器より扱いに弱点があり、使用により柄や穂先が損耗する（修理は対応する生産職が行う）",
-    "tools": [
-      {
-        "id": "otsuchi",
-        "name": "大槌（向こう鎚）",
-        "origin_skill": "系統10 採掘・鍛冶",
-        "attrs": {
-          "blunt": 10
-        },
-        "impact": "中",
-        "charged_impact": "大",
-        "handle_strain": "中",
-        "hits_to_break_80": "4回（溜め大3なら3回）",
-        "weakness": "溜めが長い。硬い外殻を叩き続けると柄が傷む（木工で挿げ替え）"
-      },
-      {
-        "id": "kakeya",
-        "name": "掛矢（大木槌）",
-        "origin_skill": "系統11 伐採・木工",
-        "attrs": {
-          "blunt": 8,
-          "stagger": 2
-        },
-        "impact": "中",
-        "handle_strain": "大",
-        "hits_to_break_80": "5回",
-        "weakness": "頭が木製のため割れやすく、鋼殻・岩肌には効果が半減する"
-      },
-      {
-        "id": "tagane_tsuchi",
-        "name": "鏨（たがね）と手槌",
-        "origin_skill": "系統10 採掘・鍛冶",
-        "attrs": {
-          "pierce": 6,
-          "blunt": 4
-        },
-        "impact": "小",
-        "handle_strain": "小",
-        "weakness": "リーチが極端に短い。岩肌や割れ目の局所穿孔向き（戦国の銀山手掘り考証に基づく）"
-      }
-    ]
+    "tool_ids": [
+      "otsuchi",
+      "kakeya",
+      "tagane_tsuchi"
+    ],
+    "note": "数値と弱点は weapon_classes の各項目（is_craft_tool: true）にだけ書く（2026-11-10 一本化）"
   }
 }
