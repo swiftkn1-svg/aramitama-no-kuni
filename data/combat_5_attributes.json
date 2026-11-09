@@ -123,7 +123,7 @@
   "spiritual_rule": {
     "status": "agreed",
     "combat_lines_spiritual": 0,
-    "rule": "戦闘系（系統1〜6）の手は霊威を持たない。荒魂は倒せるが、鎮めて和魂に戻すことはできない",
+    "rule": "戦闘系（系統1〜6、17）の手は霊威を持たない。荒魂は倒せるが、鎮めて和魂に戻すことはできない",
     "pacify_sources": [
       "系統7〜9の法術（神道祭祀・仏門法術・陰陽道）",
       "銘入りの刀（生産系・御番鍛冶が打ったもの）",
@@ -231,7 +231,11 @@
       "uchigatana_mine_uchi": "打撃10/10 × 小1 × 10 = 10 → 8回",
       "uchigatana_uchikomi": "打撃2/10 × 中2 × 10 = 4 → 20回（その間に刃こぼれする）",
       "odachi_furioroshi": "打撃5/10 × 大3 × 10 = 15 → 6回",
-      "otsuchi_furioroshi": "打撃10/10 × 特大5 × 10 = 50 → 2回"
+      "yari_tataki": "打撃8/10 × 中2 × 10 = 16 → 5回",
+      "kakeya_furioroshi": "打撃8/10 × 中2 × 10 = 16 → 5回",
+      "otsuchi_furioroshi": "打撃10/10 × 中2 × 10 = 20 → 4回（溜め大3なら3回）",
+      "kanasaibo_furioroshi": "打撃10/10 × 大3 × 10 = 30 → 3回",
+      "horokudama_bakuhatsu": "打撃7/10 × 特大5 × 10 = 35 → 3回（直撃範囲）"
     }
   },
   "blade_durability": {
@@ -538,6 +542,18 @@
           "blade_strain": "なし",
           "use": "柄で上から叩く",
           "status": "draft"
+        },
+        {
+          "id": "tsuka_ishizuki",
+          "name": "柄打ち・石突き",
+          "attrs": {
+            "blunt": 8,
+            "stagger": 2
+          },
+          "impact": "中",
+          "blade_strain": "なし",
+          "use": "懐に入られた際に石突きや柄で打ち据え、突き放す（薙刀の石突き小突とは別技）",
+          "status": "agreed"
         }
       ]
     },
@@ -585,8 +601,8 @@
     },
     {
       "id": "kanasaibo",
-      "name": "金砕棒・大槌",
-      "skill_line": 2,
+      "name": "金砕棒",
+      "skill_line": 17,
       "status": "agreed",
       "stars": {
         "impact": 5,
@@ -596,7 +612,7 @@
         "tempo": 1
       },
       "blade_strain": "なし",
-      "character": "一撃が重い。刃がないので切れ味に左右されない。外殻を下げる本職",
+      "character": "太刀並みのリーチを持つ重打撃武器。刃がないので切れ味に左右されず、外殻を叩き割る本職",
       "motions": [
         {
           "id": "furioroshi",
@@ -604,9 +620,9 @@
           "attrs": {
             "blunt": 10
           },
-          "impact": "特大",
+          "impact": "大",
           "blade_strain": "なし",
-          "use": "外殻を一気に割る",
+          "use": "重さで外殻を叩き割る（外殻80を3回で破壊。Lv100秘奥義『鬼砕き』条件達成時のみ特大5）",
           "status": "agreed"
         },
         {
@@ -616,9 +632,9 @@
             "blunt": 8,
             "stagger": 2
           },
-          "impact": "大",
+          "impact": "中",
           "blade_strain": "なし",
-          "use": "範囲を払い、よろけさせる",
+          "use": "範囲を薙ぎ払い、よろけさせる",
           "status": "agreed",
           "area": true
         }
@@ -702,6 +718,147 @@
           "status": "draft"
         }
       ]
+    },
+    {
+      "id": "otsuchi",
+      "name": "大槌（向こう鎚・職人道具）",
+      "skill_line": null,
+      "is_craft_tool": true,
+      "status": "agreed",
+      "stars": {
+        "impact": 4,
+        "cut": 0,
+        "pierce": 0,
+        "reach": 2,
+        "tempo": 1
+      },
+      "blade_strain": "なし",
+      "character": "鍛冶の相槌や普請に使う職人道具。スキルツリーは持たず、道具の重さで外殻を割る",
+      "motions": [
+        {
+          "id": "furioroshi",
+          "name": "振り下ろし",
+          "attrs": {
+            "blunt": 10
+          },
+          "impact": "中",
+          "blade_strain": "なし",
+          "use": "外殻80を4回で割る（溜めきれば衝撃大3で3回）",
+          "status": "agreed"
+        }
+      ]
+    },
+    {
+      "id": "kakeya",
+      "name": "掛矢（大木槌・職人道具）",
+      "skill_line": null,
+      "is_craft_tool": true,
+      "status": "agreed",
+      "stars": {
+        "impact": 3,
+        "cut": 0,
+        "pierce": 0,
+        "reach": 2,
+        "tempo": 1
+      },
+      "blade_strain": "なし",
+      "character": "番匠や杣人が杭打ち・門破りに使う大木槌。スキルツリーは持たない",
+      "motions": [
+        {
+          "id": "furioroshi",
+          "name": "振り下ろし",
+          "attrs": {
+            "blunt": 8,
+            "stagger": 2
+          },
+          "impact": "中",
+          "blade_strain": "なし",
+          "use": "外殻80を5回で割る。頭が木なので鋼殻・岩肌には効き半分",
+          "status": "agreed"
+        }
+      ]
     }
-  ]
+  ],
+  "stagger_and_grappling_rules": {
+    "status": "agreed",
+    "stagger_gauge": {
+      "rule": "崩しは一発で決まらず、相手の体勢ゲージを削り切ると転倒する",
+      "resistance_scaling": "転倒するたびに次の転倒に必要な体勢ゲージ量が1.5倍に増える（連続ハメ防止）",
+      "applies_to": [
+        "組討・体術",
+        "忍びの張り縄・目潰し",
+        "各武器の崩し割合"
+      ]
+    },
+    "grappling_formula": {
+      "effectiveness": "基本値 × 体格係数 × 技量差係数",
+      "skill_diff_factor": "1 + (自分の組討Lv - 相手の技量) / 50 （範囲 0.2〜1.5倍）",
+      "body_size_factor": {
+        "human_and_small": 1.0,
+        "large": 0.5,
+        "giant": 0.0,
+        "giant_note": "巨体は組めないので『取り付き（弱点へよじ登る）』になる"
+      },
+      "thresholds": {
+        "plus_20_or_more": "相手が転倒中なら一撃必殺（組み伏せて鎧通し・首取り。人型と小物のみ）",
+        "within_plus_minus_20": "通常の組み合い（スタミナ消費・荒魂の振りほどき判定）",
+        "minus_20_or_less": "組み付きに失敗して返される（自分が投げられる）"
+      },
+      "enemy_skill_examples": {
+        "雑兵": "10〜20",
+        "武者": "30〜50",
+        "豪傑": "60〜80",
+        "剣豪": "90以上"
+      },
+      "entry_windows": [
+        "相手の振り終わり",
+        "転倒中",
+        "背後"
+      ]
+    }
+  },
+  "craft_tools_in_combat": {
+    "status": "agreed",
+    "policy": "職人用の道具であり、独立した戦闘スキルツリーは持たない。道具自体の数値で誰でも振れるが、本職の武器より扱いに弱点があり、使用により柄や穂先が損耗する（修理は対応する生産職が行う）",
+    "tools": [
+      {
+        "id": "otsuchi",
+        "name": "大槌（向こう鎚）",
+        "origin_skill": "系統10 採掘・鍛冶",
+        "attrs": {
+          "blunt": 10
+        },
+        "impact": "中",
+        "charged_impact": "大",
+        "handle_strain": "中",
+        "hits_to_break_80": "4回（溜め大3なら3回）",
+        "weakness": "溜めが長い。硬い外殻を叩き続けると柄が傷む（木工で挿げ替え）"
+      },
+      {
+        "id": "kakeya",
+        "name": "掛矢（大木槌）",
+        "origin_skill": "系統11 伐採・木工",
+        "attrs": {
+          "blunt": 8,
+          "stagger": 2
+        },
+        "impact": "中",
+        "handle_strain": "大",
+        "hits_to_break_80": "5回",
+        "weakness": "頭が木製のため割れやすく、鋼殻・岩肌には効果が半減する"
+      },
+      {
+        "id": "tagane_tsuchi",
+        "name": "鏨（たがね）と手槌",
+        "origin_skill": "系統10 採掘・鍛冶",
+        "attrs": {
+          "pierce": 6,
+          "blunt": 4
+        },
+        "impact": "小",
+        "handle_strain": "小",
+        "weakness": "リーチが極端に短い。岩肌や割れ目の局所穿孔向き（戦国の銀山手掘り考証に基づく）"
+      }
+    ]
+  }
 }

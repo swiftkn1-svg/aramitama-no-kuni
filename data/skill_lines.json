@@ -7,7 +7,7 @@
         50
       ],
       "capacity_cost": 0,
-      "description": "基礎領域（0〜50）：器の総量を消費せず全16系統を無制限に習得可能。50到達で全職共通パッシブ（年輪ボーナス）が解放。"
+      "description": "基礎領域（0〜50）：器の総量を消費せず全17系統を無制限に習得可能。50到達で全職共通パッシブ（年輪ボーナス）が解放。"
     },
     "tier2_mastery": {
       "range": [
@@ -23,7 +23,7 @@
       }
     }
   },
-  "combat_skills_9": [
+  "combat_skills": [
     {
       "id": 1,
       "name": "刀剣",
@@ -45,9 +45,7 @@
       "weapons": [
         "素槍",
         "大身槍",
-        "薙刀",
-        "金砕棒",
-        "大槌"
+        "薙刀"
       ],
       "primary_attrs": [
         "貫通",
@@ -157,9 +155,21 @@
         "霊威（陰陽道）"
       ],
       "passive_50": "方違え・日蝕予知（忌み名看破・呪詛軽減）"
+    },
+    {
+      "id": 17,
+      "name": "金砕棒",
+      "weapons": [
+        "金砕棒"
+      ],
+      "primary_attrs": [
+        "打撃",
+        "崩し"
+      ],
+      "passive_50": "剛力の据わり（振りの硬直短縮・攻撃中の怯み無効）"
     }
   ],
-  "production_skills_7": [
+  "production_skills": [
     {
       "id": 10,
       "name": "採掘・鍛冶",
@@ -310,8 +320,8 @@
   ],
   "draft_extension_10s6": {
     "source": "docs/02_research/10_sengoku_infantry_realities.md §6",
-    "status": "叩き台（Claude Code 作成）",
-    "date": "2026-11-08",
+    "status": "合意反映（長柄の純化・金砕棒の独立・組討の技量差調整）",
+    "date": "2026-11-09",
     "policy": "Lv0〜50 は「場数で覚える戦場の手」。刃筋・受け流しなどの体の技は Lv51 からの流派の目録（08）に置く",
     "motion_ref_format": "combat_5_attributes.json の weapon_classes[id].motions[id] を「武器id.モーションid」で指す",
     "status_legend": {
@@ -461,7 +471,7 @@
     {
       "line_id": 2,
       "line_name": "長柄",
-      "status": "draft",
+      "status": "agreed",
       "axis": "叩く（打撃）→ 突く（貫通）",
       "techniques": [
         {
@@ -473,14 +483,14 @@
             "pierce": 10
           },
           "motion_ref": "yari.tsuki",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 10,
           "name": "間合い取り",
           "vs_human": "相手の届かない距離が分かる",
           "vs_aramitama": "荒魂の振り回しが届く範囲が見える",
-          "status": "draft",
+          "status": "agreed",
           "kind": "判別"
         },
         {
@@ -493,7 +503,7 @@
             "stagger": 1
           },
           "motion_ref": "naginata.naginarai",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 20,
@@ -505,19 +515,20 @@
             "stagger": 2
           },
           "motion_ref": "yari.tataki",
-          "status": "draft",
+          "status": "agreed",
           "grounding": "雑兵物語「突くな、上から揃って叩け」（10 §1-1）"
         },
         {
           "lv": 25,
-          "name": "振り下ろし（金砕棒・大槌）",
-          "vs_human": "盾ごと叩き潰す",
-          "vs_aramitama": "外殻を一気に割る",
+          "name": "柄打ち・石突き",
+          "vs_human": "懐に入られた相手を柄や石突きで突き放し、顎を打ち上げる",
+          "vs_aramitama": "密着した荒魂の外殻を石突きで打ち据え、崩して間合いを取り直す",
           "attrs": {
-            "blunt": 10
+            "blunt": 8,
+            "stagger": 2
           },
-          "motion_ref": "kanasaibo.furioroshi",
-          "status": "draft"
+          "motion_ref": "yari.tsuka_ishizuki",
+          "status": "agreed"
         },
         {
           "lv": 35,
@@ -529,7 +540,7 @@
             "stagger": 2
           },
           "motion_ref": "yari.nuidome",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 40,
@@ -540,7 +551,7 @@
             "pierce": 10
           },
           "motion_ref": "nagae.soroi_tsuki",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 50,
@@ -551,7 +562,7 @@
             "blunt": 5,
             "pierce": 5
           },
-          "status": "draft",
+          "status": "agreed",
           "chain": [
             "yari.tataki",
             "yari.tsuki"
@@ -563,7 +574,7 @@
     {
       "line_id": 3,
       "line_name": "組討・体術",
-      "status": "draft",
+      "status": "agreed",
       "axis": "崩す（組む）→ 抑える → 刺す（鎧通し）",
       "techniques": [
         {
@@ -574,14 +585,14 @@
           "attrs": {
             "stagger": 10
           },
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 10,
           "name": "重心見切り",
           "vs_human": "相手の重心が分かる",
           "vs_aramitama": "巨体がよろける向きが分かる",
-          "status": "draft",
+          "status": "agreed",
           "kind": "判別"
         },
         {
@@ -592,7 +603,7 @@
           "attrs": {
             "stagger": 10
           },
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 20,
@@ -603,7 +614,7 @@
             "blunt": 4,
             "stagger": 6
           },
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 25,
@@ -613,7 +624,7 @@
           "attrs": {
             "pierce": 10
           },
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 35,
@@ -623,14 +634,14 @@
           "attrs": {
             "stagger": 10
           },
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 40,
           "name": "泥中の受け身",
           "vs_human": "倒されてもすぐ起きる",
           "vs_aramitama": "吹き飛ばされても、泥の中で起き上がれる",
-          "status": "draft",
+          "status": "agreed",
           "kind": "守り"
         },
         {
@@ -642,7 +653,7 @@
             "pierce": 5,
             "stagger": 5
           },
-          "status": "draft",
+          "status": "agreed",
           "graduation": true
         }
       ]
@@ -650,7 +661,7 @@
     {
       "line_id": 4,
       "line_name": "弓術",
-      "status": "draft",
+      "status": "agreed",
       "axis": "射落とす → 射切る → 射抜く（核・眼）",
       "techniques": [
         {
@@ -662,14 +673,14 @@
             "pierce": 10
           },
           "motion_ref": "yumi.subiki",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 10,
           "name": "風読み",
           "vs_human": "風で矢がどれだけ流れるか分かる",
           "vs_aramitama": "瘴気の流れで矢がそれるのが分かる",
-          "status": "draft",
+          "status": "agreed",
           "kind": "判別"
         },
         {
@@ -681,7 +692,7 @@
             "slash": 10
           },
           "motion_ref": "yumi.karimata",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 20,
@@ -692,7 +703,7 @@
             "stagger": 10
           },
           "motion_ref": "yumi.kabura",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 25,
@@ -703,7 +714,7 @@
             "pierce": 10
           },
           "motion_ref": "yumi.subiki",
-          "status": "draft",
+          "status": "agreed",
           "hits": 2
         },
         {
@@ -715,14 +726,14 @@
             "pierce": 10
           },
           "motion_ref": "yumi.subiki",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 40,
           "name": "矢の持ち替え",
           "vs_human": "矢の種類を素早く替える",
           "vs_aramitama": "尖り矢・雁股・鏑を相手に合わせて替える",
-          "status": "draft",
+          "status": "agreed",
           "kind": "切り替え"
         },
         {
@@ -734,7 +745,7 @@
             "pierce": 7,
             "stagger": 3
           },
-          "status": "draft",
+          "status": "agreed",
           "graduation": true
         }
       ]
@@ -742,7 +753,7 @@
     {
       "line_id": 5,
       "line_name": "銃砲・火器",
-      "status": "draft",
+      "status": "agreed",
       "axis": "引き付ける → 撃つ（核・脚）",
       "techniques": [
         {
@@ -755,14 +766,14 @@
             "pierce": 8
           },
           "motion_ref": "teppo.ippatsu",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 10,
           "name": "火縄の見切り",
           "vs_human": "火縄や火薬の湿りが分かる",
           "vs_aramitama": "瘴気の湿りで不発になりやすい時が分かる",
-          "status": "draft",
+          "status": "agreed",
           "kind": "判別"
         },
         {
@@ -770,7 +781,7 @@
           "name": "早合",
           "vs_human": "弾込めが速くなる",
           "vs_aramitama": "次の隙までに撃ち直せる",
-          "status": "draft",
+          "status": "agreed",
           "kind": "準備"
         },
         {
@@ -783,7 +794,7 @@
             "stagger": 2
           },
           "motion_ref": "teppo.ippatsu",
-          "status": "draft",
+          "status": "agreed",
           "grounding": "雑兵物語（10 §1-1）"
         },
         {
@@ -795,7 +806,7 @@
             "blunt": 7,
             "stagger": 3
           },
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 35,
@@ -806,14 +817,14 @@
             "pierce": 10
           },
           "motion_ref": "teppo.ippatsu",
-          "status": "draft"
+          "status": "agreed"
         },
         {
           "lv": 40,
           "name": "筒の手入れ",
           "vs_human": "撃ち続けても暴発しにくい",
           "vs_aramitama": "連戦でも筒が傷まない",
-          "status": "draft",
+          "status": "agreed",
           "kind": "手入れ"
         },
         {
@@ -825,7 +836,7 @@
             "pierce": 10
           },
           "motion_ref": "teppo.ippatsu",
-          "status": "draft",
+          "status": "agreed",
           "grounding": "雑兵物語の「無駄弾を撃つな」（10 §1-1）",
           "graduation": true
         }
@@ -932,6 +943,54 @@
       "line_name": "陰陽道・天文",
       "status": "pending",
       "note": "霊威（陰陽道）の手。09 の考証（反閇・身固め・方違えなど）をもとに別途作る"
+    },
+    {
+      "line_id": 17,
+      "line_name": "金砕棒",
+      "status": "agreed",
+      "axis": "叩き割る（打撃）→ 薙ぎ払う（打撃・崩し）",
+      "techniques": [
+        {
+          "lv": 1,
+          "name": "振り下ろし",
+          "vs_human": "盾や兜の上から重さで叩き潰す",
+          "vs_aramitama": "硬い外殻を正面から叩き割る（泥猪の頭なら3回で破壊）",
+          "attrs": {
+            "blunt": 10
+          },
+          "motion_ref": "kanasaibo.furioroshi",
+          "status": "agreed"
+        },
+        {
+          "lv": 25,
+          "name": "横薙ぎ",
+          "vs_human": "周囲の敵をまとめて薙ぎ払い、足元を崩す",
+          "vs_aramitama": "群がる小物や歩脚をまとめて払い、体勢を崩す",
+          "attrs": {
+            "blunt": 8,
+            "stagger": 2
+          },
+          "motion_ref": "kanasaibo.yokonagi",
+          "status": "agreed"
+        },
+        {
+          "lv": 50,
+          "name": "剛力の据わり（パッシブ解放）",
+          "vs_human": "振りの硬直が減り、小突かれても体勢が崩れない",
+          "vs_aramitama": "荒魂の軽攻撃に怯まず振り抜けるようになる",
+          "status": "agreed",
+          "kind": "守り・据わり",
+          "graduation": true
+        }
+      ],
+      "lv51_plus": "山奥の怪力武者・鬼退治伝承の地の試練で『通し打ち（Lv70）』『大力（Lv85）』『鬼砕き（Lv100：条件達成時に衝撃特大5）』を解禁"
     }
-  ]
+  ],
+  "craft_skill_combination": {
+    "status": "agreed",
+    "formula": "実効技量 = 主スキル × 0.7 + 副スキルの重み付き平均 × 0.3",
+    "sub_skill_counting": "Lv0〜50の無料取得分による横並びを防ぐため、副スキルはLv51超過分を主に数えるか、副スキル群合計の重み上限を0.3〜0.4に制限する",
+    "title_system": "composite_and_secret_classes（固定9職）を『正規の名乗り』として維持し、それ以外の組み合わせを動的な二つ名として生成する二段構え",
+    "smithing_prerequisites": "鍛冶場には『火床・鞴（ふいご）・金床』が揃っていることを前提とし、手槌と松炭を用いて作業する。横座（親方）と先手（弟子・向こう鎚）の相槌拍子判定により大物鍛造ボーナスを得る"
+  }
 }

@@ -198,6 +198,9 @@ if __name__ == "__main__":
         ("uchigatana", "mine_uchi", 20.0),
         ("uchigatana", "uchikomi", 25.0),
         ("odachi", "furioroshi", 35.0),
+        ("yari", "tataki", 25.0),
+        ("kakeya", "furioroshi", 30.0),
+        ("otsuchi", "furioroshi", 35.0),
         ("kanasaibo", "furioroshi", 45.0),
     ]
     for w_id, m_id, dmg in combat_test_cases:

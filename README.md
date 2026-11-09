@@ -62,7 +62,8 @@ aramitama-no-kuni/
 │   │   ├── 07_sengoku_arms_and_tools.md       # 補遺6：戦国期（1550〜1570年代）武器・武具・職能道具の時代考証
 │   │   ├── 08_sengoku_martial_traditions.md   # 補遺7：戦国期（1550〜1570年代）武芸流派・兵法書・伝書の時代考証
 │   │   ├── 09_sengoku_religious_arts_and_divination.md # 補遺8：神道・陰陽道・密教法術と暦注・占術の時代考証
-│   │   └── 10_sengoku_infantry_realities.md           # 補遺9：足軽・雑兵の実態考証と戦闘アクション設計（4拍サイクル）
+│   │   ├── 10_sengoku_infantry_realities.md           # 補遺9：足軽・雑兵の実態考証と戦闘アクション設計（4拍サイクル）
+│   │   └── 11_sengoku_shinobi_and_tools.md            # 補遺10：戦国期の忍び（透破・乱波・草・かまり）と忍具の時代考証
 │   ├── 03_novels/izumo/                       # 正史プロトタイプ小説：出雲平定編（全5幕・永禄5年〜9年）
 │   │   ├── 00_prologue.md                     # 序幕：常世の暁と託されし通い札（正史OP）
 │   │   ├── 02_act2_kando_no_mizuumi.md        # 第二幕：神門水海のあわいと、潮騒の里結び
@@ -77,7 +78,7 @@ aramitama-no-kuni/
 │       ├── 2026-11-05_ruling_summary.md
 │       └── 2026-11-05_ruling_approval_sheet.md
 ├── data/                                      # ゲームシステム実装・検証用マスターデータ（JSON / CSV）
-│   ├── skills_16_lines.json                   # 基本スキル16系統（戦闘9＋生産7）＆複合二つ名・隠し職定義
+│   ├── skill_lines.json                       # 基本スキル17系統（戦闘10＋生産7）＆複合二つ名・隠し職定義
 │   ├── combat_5_attributes.json               # 対荒魂5大攻撃属性（打撃・切断・貫通・崩し・霊威）＆3報酬サイクル
 │   ├── izumo_nodes_and_aramitama.json         # 出雲編15拠点・結界射程3段階・荒魂4体の和魂マッピング
 │   ├── izumo_nodes_table.csv                  # 出雲編15拠点・距離・幕別対応表（CSV版）
