@@ -36,7 +36,12 @@
       "sources": [
         "https://www.nagahamajinja.or.jp/history/",
         "https://www.shimane-jinjacho.or.jp/izumo/368387146a93929fc1bd8c34dc1af193cf964263.html"
-      ]
+      ],
+      "rank": {
+        "id": "taikaku",
+        "label": "大格（大荒魂・主）",
+        "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='taikaku'] を参照"
+      }
     },
     {
       "act": "第三幕",
@@ -48,7 +53,12 @@
         "http://home.s01.itscom.net/sahara/stone/s_chugoku/shi_ishinomiya/ishinomiya.htm",
         "https://www.town.nanbu.tottori.jp/akaiiwa/2/2/",
         "https://mankusenjinja.jp/our_historical"
-      ]
+      ],
+      "rank": {
+        "id": "taikaku",
+        "label": "大格（大荒魂・主）",
+        "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='taikaku'] を参照"
+      }
     },
     {
       "act": "第四幕",
@@ -59,7 +69,12 @@
       "sources": [
         "https://www.city.sado.niigata.jp/site/bunkazai/5145.html",
         "https://ja.wikipedia.org/wiki/%E9%87%91%E5%B1%B1%E5%BD%A6%E7%A5%9E"
-      ]
+      ],
+      "rank": {
+        "id": "taikaku",
+        "label": "大格（大荒魂・主）",
+        "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='taikaku'] を参照"
+      }
     },
     {
       "act": "第五幕",
@@ -70,7 +85,12 @@
       "sources": [
         "https://yasugi-kankou.com/spot/katsuhitakamorijinja/",
         "http://engishiki.org/izumo/bun/imo430146-01.html"
-      ]
+      ],
+      "rank": {
+        "id": "kunitatari",
+        "label": "国格（国祟り）",
+        "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='kunitatari'] を参照"
+      }
     }
   ],
   "nodes_west_to_east": [

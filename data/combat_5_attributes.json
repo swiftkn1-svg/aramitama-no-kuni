@@ -174,6 +174,94 @@
         "神剣の預かり期限の具体的な長さ・条件",
         "御神徳ポイントの数値（返納時の獲得量、保持上限、1回あたりの消費量と倍率）および選択肢が出る判定の正確な範囲"
       ]
+    },
+    "aramitama_ranks": {
+      "status": "draft",
+      "date": "2026-11-11",
+      "proposal": "オーナー案。鎮める条件を『全部そろえる』形から『荒ぶり（鎮め値）ゲージを霊威で削り切る』形にする",
+      "gauge_mechanism": {
+        "name": "荒ぶり（鎮め値）ゲージ",
+        "rule": "荒ぶりを削れるのは霊威だけ（戦闘系の手そのものは霊威0のため倒せるが鎮められない）",
+        "hp_zero_araburi_remaining": "体力0・荒ぶりあり → 倒したが鎮まっていない（退散して再び出てくる）",
+        "araburi_zero": "荒ぶり0 → 鎮まって和魂に戻る",
+        "physical_party_solution": "物理特化の一行でも、格に見合った霊威装備（退魔油・破魔火薬・霊鉄の業物など）で荒ぶりを削り切れば鎮められる（仕様書第6章の方針どおり）",
+        "regeneration": "荒ぶりは時間で少しずつ戻る（再燃）。削るのが遅いと追いつかない"
+      },
+      "tier_wall_multipliers": {
+        "status": "draft",
+        "note": "格ごとに『よく通る霊威の等級』を決め、足りない場合は威力が減衰する（数値は仮）",
+        "same_or_higher_tier": 1.0,
+        "one_tier_below": 0.5,
+        "two_tiers_below": 0.1,
+        "three_tiers_below": 0.0
+      },
+      "three_pillars_synergy": {
+        "status": "draft",
+        "pillars": [
+          "① 退魔の法術（系統7〜9）",
+          "② 職人の器（真打・要釘・祭場）",
+          "③ 霊器（神剣）"
+        ],
+        "rule": "同じ戦場で実際に霊威を当てた柱の数に応じて、霊威の威力に倍率をかける。柱は別々のプレイヤーや、物語で同行する NPC が担える",
+        "multipliers_by_active_pillars": {
+          "1": 1.0,
+          "2": 1.5,
+          "3": 2.5
+        },
+        "manner_difference_optional": "3本柱で正式に鎮めると和魂の加護と御神徳が多めになり、力ずくで削り切ると鎮まるが御神徳は少なめになる（任意要素）"
+      },
+      "ranks": [
+        {
+          "id": "shokaku",
+          "rank": 1,
+          "name": "小格（小荒魂・雑霊）",
+          "examples": [
+            "道端の小さな祟り",
+            "野良の小蜘蛛・泥狸・狐憑き",
+            "合戦場跡を彷徨う小物の亡者・餓鬼"
+          ],
+          "araburi_gauge_estimate": 100,
+          "regeneration_per_sec_estimate": 1,
+          "effective_spiritual_tier": "どれでも（退魔 Lv45 卒業技、清めの塩・神酒などの消耗品）"
+        },
+        {
+          "id": "chukaku",
+          "rank": 2,
+          "name": "中格（中荒魂・里祟り）",
+          "examples": [
+            "廃村や街道を塞ぐ中型の荒魂（古猪・大百足の幼体など）",
+            "無念を残した武者頭・落ち武者の怨霊",
+            "村一つの井戸や田を腐らせる里祟り"
+          ],
+          "araburi_gauge_estimate": 300,
+          "regeneration_per_sec_estimate": 4,
+          "effective_spiritual_tier": "業物級以上（退魔 Lv51 以上の師事技、業物の退魔装備・退魔油・破魔火薬、仮の要釘、簡易祭場）"
+        },
+        {
+          "id": "taikaku",
+          "rank": 3,
+          "name": "大格（大荒魂・主）",
+          "examples": [
+            "神門水海の『水大蜘蛛』（第二幕）",
+            "斐伊川〜奥出雲の『赤黒い泥の猪神』（第三幕）",
+            "白鹿山・千尋の間歩の『黒鉄の大百足』（第四幕）"
+          ],
+          "araburi_gauge_estimate": 800,
+          "regeneration_per_sec_estimate": 10,
+          "effective_spiritual_tier": "真打・奥義級（退魔の奥義、真打・本要釘、神剣）"
+        },
+        {
+          "id": "kunitatari",
+          "rank": 4,
+          "name": "国格（国祟り）",
+          "examples": [
+            "月山富田城・千引の要石の『八岐の黒蛇（ヤマタノオロチ）』（第五幕）"
+          ],
+          "araburi_gauge_estimate": 2000,
+          "regeneration_per_sec_estimate": 25,
+          "effective_spiritual_tier": "神宝級（物語上の前提として『三社結び』の包囲圧縮が必要）"
+        }
+      ]
     }
   },
   "shell_gauge": {
