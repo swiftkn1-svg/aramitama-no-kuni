@@ -222,7 +222,8 @@
           ],
           "araburi_gauge_estimate": 100,
           "regeneration_per_sec_estimate": 1,
-          "effective_spiritual_tier": "どれでも（退魔 Lv45 卒業技、清めの塩・神酒などの消耗品）"
+          "effective_spiritual_tier": "どれでも（退魔 Lv45 卒業技、清めの塩・神酒などの消耗品）",
+          "required_tier": 1
         },
         {
           "id": "chukaku",
@@ -235,7 +236,8 @@
           ],
           "araburi_gauge_estimate": 300,
           "regeneration_per_sec_estimate": 4,
-          "effective_spiritual_tier": "業物級以上（退魔 Lv51 以上の師事技、業物の退魔装備・退魔油・破魔火薬、仮の要釘、簡易祭場）"
+          "effective_spiritual_tier": "業物級以上（退魔 Lv51 以上の師事技、業物の退魔装備・退魔油・破魔火薬、仮の要釘、簡易祭場）",
+          "required_tier": 2
         },
         {
           "id": "taikaku",
@@ -248,7 +250,8 @@
           ],
           "araburi_gauge_estimate": 800,
           "regeneration_per_sec_estimate": 10,
-          "effective_spiritual_tier": "真打・奥義級（退魔の奥義、真打・本要釘、神剣）"
+          "effective_spiritual_tier": "真打・奥義級（退魔の奥義、真打・本要釘、神剣）",
+          "required_tier": 3
         },
         {
           "id": "kunitatari",
@@ -259,7 +262,87 @@
           ],
           "araburi_gauge_estimate": 2000,
           "regeneration_per_sec_estimate": 25,
-          "effective_spiritual_tier": "神宝級（物語上の前提として『三社結び』の包囲圧縮が必要）"
+          "effective_spiritual_tier": "神宝級（物語上の前提として『三社結び』の包囲圧縮が必要）",
+          "required_tier": 4
+        }
+      ]
+    },
+    "spiritual_sources_tiers": {
+      "status": "draft",
+      "date": "2026-11-12",
+      "note": "等級の壁の判定に用いる、法術・鍛冶品・霊器・消耗品の霊威等級（1〜4）と基準鎮め値削り量（1回または1秒あたり、仮置き）の定義（1か所に集約）",
+      "sources": [
+        {
+          "id": "salt_and_sake",
+          "name": "清めの塩・神酒（消耗品）",
+          "pillar": null,
+          "tier": 1,
+          "tier_label": "並・消耗品級（小格向け）",
+          "araburi_decay_per_sec": 8.0,
+          "status": "draft"
+        },
+        {
+          "id": "exorcism_lv45_basic",
+          "name": "退魔3系統 Lv45 卒業技（鎮めの祝詞・引導渡し・忌み名封じ）",
+          "pillar": "法術",
+          "tier": 1,
+          "tier_label": "並・基礎法術級（小格向け）",
+          "araburi_decay_per_sec": 15.0,
+          "status": "draft"
+        },
+        {
+          "id": "wazamono_spiritual_gear",
+          "name": "業物級の退魔装備・消耗品（退魔油・破魔火薬・霊鉄の業物・仮の要釘・簡易祭場）",
+          "pillar": "職人の器",
+          "tier": 2,
+          "tier_label": "業物級（中格向け）",
+          "araburi_decay_per_sec": 28.0,
+          "status": "draft"
+        },
+        {
+          "id": "exorcism_lv70_master",
+          "name": "退魔3系統 Lv51〜70 師事技（目録段階の護摩・祓い・式占）",
+          "pillar": "法術",
+          "tier": 2,
+          "tier_label": "業物・目録級（中格向け）",
+          "araburi_decay_per_sec": 32.0,
+          "status": "draft"
+        },
+        {
+          "id": "shinuchi_and_hon_kanamekugi",
+          "name": "真打（銘入りの刀）・本要釘・本祭場",
+          "pillar": "職人の器",
+          "tier": 3,
+          "tier_label": "真打・奥義級（大格向け）",
+          "araburi_decay_per_sec": 25.0,
+          "status": "draft"
+        },
+        {
+          "id": "exorcism_lv85_secret",
+          "name": "退魔3系統 Lv85〜100 奥義",
+          "pillar": "法術",
+          "tier": 3,
+          "tier_label": "真打・奥義級（大格向け）",
+          "araburi_decay_per_sec": 30.0,
+          "status": "draft"
+        },
+        {
+          "id": "shinken_relic",
+          "name": "神剣・神宝（期限つき預かりの霊器）",
+          "pillar": "霊器",
+          "tier": 3,
+          "tier_label": "真打・奥義級（大格向け）",
+          "araburi_decay_per_sec": 25.0,
+          "status": "draft"
+        },
+        {
+          "id": "shinpou_ookanamekugi_and_sansha",
+          "name": "神宝『八握の大要釘』＋三社結び包囲陣＋大境鎮めの斎",
+          "pillar": "3本柱総力",
+          "tier": 4,
+          "tier_label": "神宝級（国格［国祟り］向け）",
+          "araburi_decay_per_sec": 60.0,
+          "status": "draft"
         }
       ]
     }
