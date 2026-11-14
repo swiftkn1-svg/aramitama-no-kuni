@@ -162,10 +162,12 @@ def sim_shell_combat_cycle(weapon_id: str, motion_id: str, base_damage: float,
 
 
 
-def sim_araburi_pacification(rank_id: str, source_ids: list, data: dict = None) -> dict:
+def sim_araburi_pacification(rank_id: str, source_ids: list, data: dict = None,
+                             override_gauge: float = None) -> dict:
     """
     荒ぶり（鎮め値）ゲージの削り切りシミュレーション（data/combat_5_attributes.json 動的参照）
     - 各霊威源の基準削り量 × 等級の壁倍率 を合算し、発動した柱（法術・職人の器・霊器）の数に応じたシナジー倍率を掛ける。
+    - 等級の壁で効き目が0（3段下：倍率0.0）の霊威源は、柱に数えない（1割でも通っていれば数える）。
     - 1秒あたりの純削り量 = 総霊威削り量 - 再燃（regeneration_per_sec_estimate）
     """
     data = data or load_combat_data()
@@ -184,10 +186,6 @@ def sim_araburi_pacification(rank_id: str, source_ids: list, data: dict = None) 
     for sid in source_ids:
         src = sources_map[sid]
         source_names.append(src["name"].split("（")[0])
-        if src["pillar"] == "3本柱総力":
-            active_pillars.update(["法術", "職人の器", "霊器"])
-        elif src["pillar"]:
-            active_pillars.add(src["pillar"])
 
         diff = req_tier - src["tier"]
         if diff <= 0:
@@ -199,18 +197,25 @@ def sim_araburi_pacification(rank_id: str, source_ids: list, data: dict = None) 
         else:
             w_mult = wall["three_tiers_below"]
 
+        # Item 2: Only count pillar if w_mult > 0 (at least 0.1 passes through the tier wall)
+        if w_mult > 0.0:
+            if src["pillar"] == "3本柱総力":
+                active_pillars.update(["法術", "職人の器", "霊器"])
+            elif src["pillar"]:
+                active_pillars.add(src["pillar"])
+
         raw_decay_sum += src["araburi_decay_per_sec"] * w_mult
 
-    pillar_count = max(1, len(active_pillars)) if source_ids else 1
-    synergy_mult = pillar_mults[str(min(3, pillar_count))] if active_pillars else 1.0
+    pillar_count = len(active_pillars)
+    synergy_mult = pillar_mults[str(min(3, pillar_count))] if pillar_count >= 1 else 1.0
     total_decay_per_sec = round(raw_decay_sum * synergy_mult, 2)
     regen = rank_info["regeneration_per_sec_estimate"]
     net_decay_per_sec = round(total_decay_per_sec - regen, 2)
-    gauge = rank_info["araburi_gauge_estimate"]
+    gauge = override_gauge if override_gauge is not None else rank_info["araburi_gauge_estimate"]
 
     if net_decay_per_sec <= 0:
         seconds_to_pacify = None
-        outcome = "【鎮め不可（再燃が上回り退散・再出現）】"
+        outcome = "【鎮め不可（再燃が上回る）】"
     else:
         seconds_to_pacify = round(gauge / net_decay_per_sec, 1)
         outcome = f"【{seconds_to_pacify}秒で鎮定完了（和魂化）】"
@@ -220,13 +225,14 @@ def sim_araburi_pacification(rank_id: str, source_ids: list, data: dict = None) 
         "gauge": gauge,
         "regen": regen,
         "sources_label": " ＋ ".join(source_names),
-        "pillar_count": len(active_pillars),
+        "pillar_count": pillar_count,
         "synergy_mult": synergy_mult,
         "total_decay_per_sec": total_decay_per_sec,
         "net_decay_per_sec": net_decay_per_sec,
         "seconds_to_pacify": seconds_to_pacify,
         "outcome": outcome,
     }
+
 
 if __name__ == "__main__":
     print("=" * 72)
@@ -266,7 +272,6 @@ if __name__ == "__main__":
         status = "【合格】" if tr["passed"] else "【不合格】"
         print(f"  - タグ {tags}: 実効装甲={tr['effective_armor']} <= 刀許容={tr['blade_limit']} {status} 『{tr['master_comment']}』")
 
-
     print("\n[5] 外殻ゲージ計算＆部位破壊4拍サイクル（泥猪の頭 外殻80・なまくら刀耐久40）:")
     combat_data = load_combat_data()
     combat_test_cases = [
@@ -283,10 +288,10 @@ if __name__ == "__main__":
         dur = "刃なし" if c_res["remaining_durability"] is None else f"{c_res['remaining_durability']:g}/40・{c_res['blade_state']}"
         print(f"  - {c_res['weapon']}【{c_res['motion']}】（{c_res['label']}）: 1撃の外殻削り={c_res['shell_decay_per_hit']} ➔ 外殻80破壊まで【{c_res['hits_to_break']}回】 (破壊時の刃={dur}, 外殻破壊後の1撃={c_res['post_break_damage']})")
 
-    print("\n[6] 荒ぶり（鎮め値）ゲージ＆等級の壁・再燃・3本柱シナジー検証（大格：赤黒い泥の猪神 荒ぶり800・再燃10/秒）:")
+    print("\n[6] 荒ぶり（鎮め値）ゲージ＆等級の壁・再燃・3本柱シナジー検証（大格：赤黒い泥の猪神 再燃10/秒）:")
     araburi_cases = [
         ("基礎のみ（Lv45祝詞＋清め塩：2段下）", "taikaku", ["exorcism_lv45_basic", "salt_and_sake"]),
-        ("物理特化一行（業物級の退魔装備・退魔油・破魔火薬×2人分：1段下・柱1本）", "taikaku", ["wazamono_spiritual_gear", "wazamono_spiritual_gear"]),
+        ("物理特化一行（業物級の退魔装備×3人分：1段下・柱1本）", "taikaku", ["wazamono_spiritual_gear", "wazamono_spiritual_gear", "wazamono_spiritual_gear"]),
         ("2本柱連携（退魔奥義＋真打・本要釘：同格・柱2本×1.5倍）", "taikaku", ["exorcism_lv85_secret", "shinuchi_and_hon_kanamekugi"]),
         ("3本柱総力（退魔奥義＋真打・本要釘＋神剣：同格・柱3本×2.5倍）", "taikaku", ["exorcism_lv85_secret", "shinuchi_and_hon_kanamekugi", "shinken_relic"]),
     ]
@@ -294,3 +299,6 @@ if __name__ == "__main__":
         a_res = sim_araburi_pacification(r_id, s_ids, data=combat_data)
         print(f"  - {label}: 総削り={a_res['total_decay_per_sec']}/秒 (柱{a_res['pillar_count']}本×{a_res['synergy_mult']}倍) - 再燃{a_res['regen']}/秒 = 純削り{a_res['net_decay_per_sec']}/秒 ➔ {a_res['outcome']}")
 
+    # Verify 3-tiers-below (0.0 multiplier) is NOT counted as a pillar on Kunitatari (tier 4)
+    kuni_check = sim_araburi_pacification("kunitatari", ["exorcism_lv45_basic", "shinuchi_and_hon_kanamekugi"], data=combat_data)
+    print(f"  - [柱除外テスト] 国格（等級4）に Lv45祝詞（等級1＝3段下・無効）＋真打（等級3＝1段下）を当てた場合: 有効な柱={kuni_check['pillar_count']}本（3段下の法術は柱に数えない）")
