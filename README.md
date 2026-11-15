@@ -65,7 +65,8 @@ aramitama-no-kuni/
 │   │   ├── 10_sengoku_infantry_realities.md           # 補遺9：足軽・雑兵の実態考証と戦闘アクション設計（4拍サイクル）
 │   │   ├── 11_sengoku_shinobi_and_tools.md            # 補遺10：戦国期の忍び（透破・乱波・草・かまり）と忍具の時代考証
 │   │   ├── 12_hyakki_yagyo_days_and_kamiarizuki.md    # 補遺11：百鬼夜行日（忌夜行）と出雲の神在月の時代考証
-│   │   └── 13_solar_eclipses_1562_1592.md             # 補遺12：1562〜1592年の日食（1563年は日本で見えず、1582年6月20日が本命）
+│   │   ├── 13_solar_eclipses_1562_1592.md             # 補遺12：1562〜1592年の日食（1563年は日本で見えず、1582年6月20日が本命）
+│   │   └── 14_ichinomiya_sanin_sanyo_6_provinces.md   # 補遺13：山陰・山陽6か国（伯耆・因幡・石見・隠岐・備中・備後）の一宮・二宮・三宮 考証表
 │   ├── 03_novels/izumo/                       # 正史プロトタイプ小説：出雲平定編（全5幕・永禄5年〜9年）
 │   │   ├── 00_prologue.md                     # 序幕：常世の暁と託されし通い札（正史OP）
 │   │   ├── 02_act2_kando_no_mizuumi.md        # 第二幕：神門水海のあわいと、潮騒の里結び
