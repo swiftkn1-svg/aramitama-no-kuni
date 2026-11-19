@@ -1,0 +1,243 @@
+{
+  "version": "MASTER VISION v2.2",
+  "status": "draft",
+  "date": "2026-11-19",
+  "note": "オーナー決定47〜55に基づく12地方・全68令制国の一覧と二階層の役割分担。仮数値や未検証の国別大格（伯耆の試作等）は含めない。",
+  "hierarchy_roles": {
+    "province_68": [
+      "大格",
+      "結界の網と大結界（一国全域 約40〜60km）",
+      "土地の穢れ",
+      "結界カバー率の基準",
+      "世代交代に必要な結界数の判定",
+      "大結界発動当夜の『太平の夜祭り』"
+    ],
+    "region_12": [
+      "主（国格）",
+      "憑き物の相手（1人の大大名に限らない。範囲・呼び名は未定）",
+      "平定の区切り"
+    ]
+  },
+  "province_three_thresholds": [
+    {
+      "step": 1,
+      "name": "世代交代ができる",
+      "condition": "その国の大格の結界が必要な数に届く（計算式は未定。かつ決定59により先触れで縛られていないこと）"
+    },
+    {
+      "step": 2,
+      "name": "結界の網が完成する",
+      "condition": "その国の大格の結界がすべてそろう（主のいる国では主に挑めるようになり、主のいない国では国境の道が開く）"
+    },
+    {
+      "step": 3,
+      "name": "大結界が発動する",
+      "condition": "その国の結界の網が完成しており、かつその地方の主が鎮まっている（国ごとに発動し、当夜に『太平の夜祭り』が開かれる）"
+    }
+  ],
+  "division_rules": [
+    "街道（五畿七道）どおりに切る。東国だけ、当時からあるまとまりの坂東8国と奥羽2国を取り出す",
+    "主の舞台が2つある道（東山・西海）だけ、同じ道の中で割る。道をまたいで国を動かさない"
+  ],
+  "total_regions": 12,
+  "total_provinces": 68,
+  "regions": [
+    {
+      "id": 1,
+      "name": "畿内",
+      "provinces": [
+        "山城",
+        "大和",
+        "河内",
+        "和泉",
+        "摂津"
+      ],
+      "province_count": 5,
+      "lord_stage": null,
+      "lord_stage_status": "undecided",
+      "note": "最終領域（企画書 11-2 の検討課題のまま。その地方を作るときに決める）"
+    },
+    {
+      "id": 2,
+      "name": "東海",
+      "provinces": [
+        "伊賀",
+        "伊勢",
+        "志摩",
+        "尾張",
+        "三河",
+        "遠江",
+        "駿河",
+        "伊豆",
+        "甲斐"
+      ],
+      "province_count": 9,
+      "lord_stage": "富士山",
+      "lord_stage_status": "spec_reference",
+      "note": "舞台が駿河・甲斐の2国にまたがる場合の『主のいる国』の数え方は未定"
+    },
+    {
+      "id": 3,
+      "name": "坂東",
+      "provinces": [
+        "相模",
+        "武蔵",
+        "安房",
+        "上総",
+        "下総",
+        "常陸",
+        "上野",
+        "下野"
+      ],
+      "province_count": 8,
+      "lord_stage": null,
+      "lord_stage_status": "undecided",
+      "stage_candidates_unverified": [
+        "鹿島・香取の要石",
+        "赤城・男体山"
+      ],
+      "note": "主の舞台はその地方を作るときに決める（決定55）"
+    },
+    {
+      "id": 4,
+      "name": "近江",
+      "provinces": [
+        "近江"
+      ],
+      "province_count": 1,
+      "lord_stage": "琵琶湖",
+      "lord_stage_status": "spec_reference",
+      "note": "東山道から分割した1国だけの地方"
+    },
+    {
+      "id": 5,
+      "name": "東山",
+      "provinces": [
+        "美濃",
+        "飛騨",
+        "信濃"
+      ],
+      "province_count": 3,
+      "lord_stage": "諏訪湖",
+      "lord_stage_status": "spec_reference",
+      "note": "近江を除いた東山道3国"
+    },
+    {
+      "id": 6,
+      "name": "奥羽",
+      "provinces": [
+        "陸奥",
+        "出羽"
+      ],
+      "province_count": 2,
+      "lord_stage": "鳥海山",
+      "lord_stage_status": "spec_reference",
+      "note": ""
+    },
+    {
+      "id": 7,
+      "name": "北陸",
+      "provinces": [
+        "若狭",
+        "越前",
+        "加賀",
+        "能登",
+        "越中",
+        "越後",
+        "佐渡"
+      ],
+      "province_count": 7,
+      "lord_stage": "立山",
+      "lord_stage_status": "spec_reference",
+      "note": ""
+    },
+    {
+      "id": 8,
+      "name": "山陰",
+      "provinces": [
+        "丹波",
+        "丹後",
+        "但馬",
+        "因幡",
+        "伯耆",
+        "出雲",
+        "石見",
+        "隠岐"
+      ],
+      "province_count": 8,
+      "lord_stage": "月山富田城",
+      "lord_stage_status": "confirmed",
+      "lord_name": "八岐の黒蛇（ヤマタノオロチ）",
+      "note": "出雲編の舞台。八岐の黒蛇が山陰の主にあたる"
+    },
+    {
+      "id": 9,
+      "name": "山陽",
+      "provinces": [
+        "播磨",
+        "美作",
+        "備前",
+        "備中",
+        "備後",
+        "安芸",
+        "周防",
+        "長門"
+      ],
+      "province_count": 8,
+      "lord_stage": "厳島",
+      "lord_stage_status": "spec_reference",
+      "note": ""
+    },
+    {
+      "id": 10,
+      "name": "南海",
+      "provinces": [
+        "紀伊",
+        "淡路",
+        "阿波",
+        "讃岐",
+        "伊予",
+        "土佐"
+      ],
+      "province_count": 6,
+      "lord_stage": null,
+      "lord_stage_status": "undecided",
+      "stage_candidates_unverified": [
+        "石鎚山",
+        "熊野"
+      ],
+      "note": "主の舞台はその地方を作るときに決める（決定55）"
+    },
+    {
+      "id": 11,
+      "name": "北九州",
+      "provinces": [
+        "筑前",
+        "筑後",
+        "豊前",
+        "豊後",
+        "肥前",
+        "壱岐",
+        "対馬"
+      ],
+      "province_count": 7,
+      "lord_stage": "博多湾・豊前",
+      "lord_stage_status": "spec_reference",
+      "note": "西海道を道の中で北7国・南4国に分割"
+    },
+    {
+      "id": 12,
+      "name": "南九州",
+      "provinces": [
+        "肥後",
+        "日向",
+        "大隅",
+        "薩摩"
+      ],
+      "province_count": 4,
+      "lord_stage": "阿蘇",
+      "lord_stage_status": "spec_reference",
+      "note": "西海道を道の中で北7国・南4国に分割"
+    }
+  ]
+}

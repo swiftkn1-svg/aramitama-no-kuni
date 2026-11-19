@@ -41,7 +41,8 @@
         "id": "taikaku",
         "label": "大格（大荒魂・主）",
         "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='taikaku'] を参照"
-      }
+      },
+      "protection_note": "眷属・神使の大格のため、個体保護印（is_protected_provincial_face）は付けない（力で滅ぼせるが損な道）"
     },
     {
       "act": "第三幕",
@@ -58,7 +59,8 @@
         "id": "taikaku",
         "label": "大格（大荒魂・主）",
         "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='taikaku'] を参照"
-      }
+      },
+      "protection_note": "眷属・神使の大格のため、個体保護印（is_protected_provincial_face）は付けない（力で滅ぼせるが損な道）"
     },
     {
       "act": "第四幕",
@@ -74,7 +76,8 @@
         "id": "taikaku",
         "label": "大格（大荒魂・主）",
         "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='taikaku'] を参照"
-      }
+      },
+      "protection_note": "眷属・神使の大格のため、個体保護印（is_protected_provincial_face）は付けない（力で滅ぼせるが損な道）"
     },
     {
       "act": "第五幕",
@@ -90,7 +93,9 @@
         "id": "kunitatari",
         "label": "国格（国祟り）",
         "ref": "combat_5_attributes.json の spiritual_rule.aramitama_ranks.ranks[id='kunitatari'] を参照"
-      }
+      },
+      "region_role": "山陰（8か国）の主（国格）",
+      "protection_note": "山陰の主（国格）であり、格のルール（can_be_destroyed_by_force: false）により力で滅ぼせない"
     }
   ],
   "nodes_west_to_east": [
@@ -244,5 +249,8 @@
       "distance_note": "杵築から東へ直線約45〜48km（出雲東端）",
       "role": "最終決戦地（千引の要石・八岐の黒蛇戦）。四方共鳴『国引きの大結界』完結点"
     }
-  ]
+  ],
+  "province": "出雲",
+  "region": "山陰（8か国。出雲は主のいる国にあたり、国と地方が重なって見えていた例）",
+  "regions_ref": "data/regions_12_and_provinces_68.json"
 }

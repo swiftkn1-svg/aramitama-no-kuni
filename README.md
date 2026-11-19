@@ -85,6 +85,7 @@ aramitama-no-kuni/
 │   ├── combat_5_attributes.json               # 対荒魂5大攻撃属性（打撃・切断・貫通・崩し・霊威）＆3報酬サイクル
 │   ├── izumo_nodes_and_aramitama.json         # 出雲編15拠点・結界射程3段階・荒魂4体の和魂マッピング
 │   ├── izumo_nodes_table.csv                  # 出雲編15拠点・距離・幕別対応表（CSV版）
+│   ├── regions_12_and_provinces_68.json         # 全12地方・68令制国の一覧と二階層役割分担（決定47〜55）
 │   └── master_npcs_and_trials.json            # 師匠NPC段階別上限（70➔85➔100）＆マルチ解法試練6種・属性タグ
 └── scripts/
     └── sim_aramitama_core.py                  # コアメカニクス検証シミュレータ（クラフト乗算式・真打流通・潮汐・試練判定）
